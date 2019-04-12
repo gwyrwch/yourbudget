@@ -1,7 +1,6 @@
 from PIL import Image
 import pytesseract
-from Receipt import Receipt
-import language_tool
+from yourbudget.Receipt import Receipt
 
 
 class ReceiptReader:
