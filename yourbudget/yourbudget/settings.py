@@ -123,6 +123,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = ''
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    # FIXME: WTF
+    # os.path.join(BASE_DIR, "static"),
+    '/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/static'
 ]
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates'),
+)
