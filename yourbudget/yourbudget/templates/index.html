@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Inspire - Admin and Dashboard Template</title>
+    <title>yourbudget web</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="{% static "assets/css/bootstrap.min.css" %}">
@@ -703,7 +703,7 @@
                 <div class="col-lg-8 col-md-12 col-xs-12">
                   <div class="card">
                     <div class="card-header">
-                      <h4 class="card-title">Best Performing Clients</h4>
+                      <h4 class="card-title">Most visited shops</h4>
                       <div class="selected float-right">
                         <select class="custom-select">
                           <option selected="selected" value="0">Monthly</option>
@@ -717,11 +717,9 @@
                       <table class="table table-lg">
                         <thead>
                           <tr>
-                            <td class="text-dark text-semibold">Company Name</td>
-                            <td class="text-dark text-semibold">Product</td>
-                            <td class="text-dark text-semibold">Source</td>
-                            <td class="text-dark text-semibold">Status</td>
-                            <td class="text-dark text-semibold">Billed</td>
+                            <td class="text-dark text-semibold">Shop Name</td>
+                            <td class="text-dark text-semibold">Category</td>
+                            <td class="text-dark text-semibold">Location</td>
                             <td class="text-dark text-semibold">Paid</td>
                           </tr>
                         </thead>
@@ -731,76 +729,70 @@
                               <div class="list-media">
                                 <div class="list-item">
                                   <div class="media-img">
-                                    <a class="btn btn-circle btn-info text-white">TM</a>
+                                    <a class="btn btn-circle btn-info text-white">KR</a>
                                   </div>
                                   <div class="info">
-                                    <span class="title text-semibold">Tesla Motors</span>
+                                    <span class="title text-semibold">Корона</span>
                                   </div>
                                 </div>
                               </div>
                             </td>
-                            <td>CRM Software</td>
-                            <td>Onsite</td>
-                            <td><a href="#" class="badge badge-danger">Processing</a></td>
-                            <td>$423.00</td>
-                            <td>$168.00</td>
+                            <td>Grocery</td>
+                            <td>ТЦ Замок</td>
+                            <td>525.03 BYN</td>
                           </tr>
                           <tr>
                             <td>
                               <div class="list-media">
                                 <div class="list-item">
                                   <div class="media-img">
-                                     <a class="btn btn-circle btn-danger text-white">SM</a>
+                                     <a class="btn btn-circle btn-danger text-white">BR</a>
                                   </div>
                                   <div class="info">
-                                    <span class="title text-semibold">Samsung</span>
+                                    <span class="title text-semibold">Bershka</span>
                                   </div>
                                 </div>
                               </div>
                             </td>
-                            <td>GIS Software</td>
-                            <td>Marketplace</td>
-                            <td><a href="#" class="badge badge-success">Done</a></td>
-                            <td>$665.67</td>
-                            <td>$665.67</td>
+                            <td>Clothes</td>
+                            <td>GreenCity</td>
+                            <td>240.25 BYN</td>
                           </tr>
                           <tr>
                             <td>
                               <div class="list-media">
                                 <div class="list-item">
                                   <div class="media-img">
-                                     <a class="btn btn-circle btn-success text-white">DR</a>
+                                     <a class="btn btn-circle btn-success text-white">MC</a>
                                   </div>
                                   <div class="info">
-                                    <span class="title text-semibold">Dropbox Inc.</span>
+                                    <span class="title text-semibold">Mcdonald's</span>
                                   </div>
                                 </div>
                               </div>
                             </td>
-                            <td>Accounting Software</td>
-                            <td>Others</td>
-                            <td><a href="#" class="badge badge-info">On-hold</a></td>
-                            <td>$576.00</td>
-                            <td>$476.00</td>
+                            <td>Food</td>
+                            <td>Вокзал</td>
+                            <!--<td><a href="#" class="badge badge-info">On-hold</a></td>-->
+                            <td>46.12 BYN</td>
                           </tr>
                           <tr>
                             <td>
                               <div class="list-media">
                                 <div class="list-item">
                                   <div class="media-img">
-                                     <a class="btn btn-circle btn-primary text-white">UD</a>
+                                     <a class="btn btn-circle btn-primary text-white">EL</a>
                                   </div>
                                   <div class="info">
-                                    <span class="title text-semibold">UIdeck</span>
+                                    <span class="title text-semibold">5 элемент</span>
                                   </div>
                                 </div>
                               </div>
                             </td>
-                            <td>Sales Dashboard</td>
-                            <td>Marketplace</td>
-                            <td><a href="#" class="badge badge-success">Done</a></td>
-                            <td>$234.00</td>
-                            <td>$234.00</td>
+                            <td>Electronics</td>
+                            <td>ТЦ Замок</td>
+                            <!--<td><a href="#" class="badge badge-success">Done</a></td>-->
+                            <td>40.28 BYN</td>
                           </tr>
                         </tbody>
                       </table>
@@ -810,164 +802,27 @@
                 <div class="col-lg-4 col-md-12 col-xs-12">
                   <div class="card">
                     <div class="card-body text-center">
-                      <h4 class="header-title">Earning Sources</h4>
+                      <h4 class="header-title">Categorization</h4>
                       <ul class="list-inline widget-chart m-t-20 text-center">
                         <li>
-                          <h4 class=""><b>3654</b></h4>
-                          <p class="text-muted m-b-0">Marketplace</p>
+                          <h4 class=""><b>525</b></h4>
+                          <p class="text-muted m-b-0">Grocery</p>
                         </li>
                         <li>
-                          <h4 class=""><b>954</b></h4>
-                          <p class="text-muted m-b-0">On Site</p>
+                          <h4 class=""><b>240</b></h4>
+                          <p class="text-muted m-b-0">Clothes</p>
                         </li>
                         <li>
-                          <h4 class=""><b>262</b></h4>
-                          <p class="text-muted m-b-0">Others</p>
+                          <h4 class=""><b>46</b></h4>
+                          <p class="text-muted m-b-0">Food</p>
                         </li>
+                         <li>
+                          <h4 class=""><b>40</b></h4>
+                          <p class="text-muted m-b-0">Electronics</p>
+                        </li>
+
                       </ul>
                       <div id="morris-donut-example" style="height: 240px"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-4 col-md-6 col-xs-12">
-                  <div class="card">
-                    <div class="card-header">
-                      <h4 class="card-title">To Do Task List</h4>
-                      <div class="card-toolbar">
-                        <ul>
-                          <li>
-                            <a class="text-gray" href="#">
-                              <i class="lni-more-alt"></i>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <ul class="list-task list-group">
-                      <li class="list-group-item border-0" data-role="task">
-                        <div class="d-flex w-100 justify-content-between align-items-center">
-                          <div class="custom-control custom-checkbox material-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="followUp" checked="">
-                            <label class="custom-control-label" for="followUp">Follow up clients</label>
-                          </div><span class="badge badge-danger">Missed</span>
-                        </div>
-                      </li>
-                      <li class="list-group-item border-0" data-role="task">
-                        <div class="d-flex w-100 justify-content-between align-items-center">
-                          <div class="custom-control custom-checkbox material-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="JoinMeeting" checked="">
-                            <label class="custom-control-label" for="JoinMeeting">Join business meeting</label>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="list-group-item border-0" data-role="task">
-                        <div class="d-flex w-100 justify-content-between align-items-center">
-                          <div class="custom-control custom-checkbox material-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="brainstorm" checked="">
-                            <label class="custom-control-label" for="brainstorm">Discuss about new project</label>
-                          </div>
-                          <span class="badge badge-warning">Today</span>
-                        </div>
-                      </li>
-                      <li class="list-group-item border-0" data-role="task">
-                        <div class="d-flex w-100 justify-content-between align-items-center">
-                          <div class="custom-control custom-checkbox material-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="newFunnel">
-                            <label class="custom-control-label" for="newFunnel">Design a new funnel</label>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="list-group-item border-0" data-role="task">
-                        <div class="d-flex w-100 justify-content-between align-items-center">
-                          <div class="custom-control custom-checkbox material-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="makeAnewOrder">
-                            <label class="custom-control-label" for="makeAnewOrder">Make a new app</label>
-                          </div>
-                          <span class="badge badge-success">3 weeks</span>
-                        </div>
-                      </li>
-                      <li class="list-group-item border-0" data-role="task">
-                        <div class="d-flex w-100 justify-content-between align-items-center">
-                          <div class="custom-control custom-checkbox material-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="generalThings">
-                            <label class="custom-control-label" for="generalThings">Send materials</label>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-xs-12">
-                  <div class="follow">
-                    <div class="card">
-                      <div class="card-header">
-                        <h4 class="card-title">New Clients</h4>
-                        <div class="card-toolbar">
-                          <ul>
-                            <li>
-                              <a class="text-gray" href="#">
-                                <i class="lni-more-alt"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <ul class="list-media">
-                        <li class="list-item">
-                          <div class="client-item">
-                            <div class="media-img">
-                              <img src="{% static "assets/img/avatar/user1.png" %}" alt="">
-                            </div>
-                            <div class="info">
-                              <span class="title text-semibold">Johny Vinno</span>
-                              <div class="float-item">
-                                <button class="btn btn-common btn-rounded">Follow</button>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="list-item">
-                          <div class="client-item">
-                            <div class="media-img">
-                              <img src="{% static "assets/img/avatar/user2.png" %}" alt="">
-                            </div>
-                            <div class="info">
-                              <span class="title text-semibold">Robinson</span>
-                              <div class="float-item">
-                                <button class="btn btn-common btn-rounded">Follow</button>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="list-item">
-                          <div class="client-item">
-                            <div class="media-img">
-                              <img src="{% static "assets/img/avatar/user3.png" %}" alt="">
-                            </div>
-                            <div class="info">
-                              <span class="title text-semibold">Chris Anderson</span>
-                              <div class="float-item">
-                                <button class="btn btn-common btn-rounded">Follow</button>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="list-item">
-                          <div class="client-item">
-                            <div class="media-img">
-                              <img src="{% static "assets/img/avatar/user4.png" %}" alt="">
-                            </div>
-                            <div class="info">
-                              <span class="title text-semibold">Kornelia Sturb</span>
-                              <div class="float-item">
-                                <button class="btn btn-common btn-rounded">Follow</button>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
                     </div>
                   </div>
                 </div>
@@ -980,7 +835,7 @@
           <footer class="content-footer">
             <div class="footer">
               <div class="copyright">
-                <span>Copyright © 2018 <b class="text-dark">UIdeck</b>. All Right Reserved</span>
+                <span>Copyright © 2019 <b class="text-dark">yourbudget inc</b>. All Right Reserved</span>
                 <span class="go-right">
                   <a href="" class="text-gray">Term &amp; Conditions</a>
                   <a href="" class="text-gray">Privacy &amp; Policy</a>

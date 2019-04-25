@@ -53,11 +53,12 @@ File: dashborad1 js
 
             //creating donut chart for dashboard-1
             var $donutData = [
-                {label: "Marketplace", value: 55},
-                {label: "On-site", value: 30},
-                {label: "Others", value: 15},
+                {label: "Grocery", value: 62},
+                {label: "Clothes", value: 29},
+                {label: "Food", value: 5},
+                {label: "Electronics", value: 4},
             ];
-            this.createDonutChart('morris-donut-example', $donutData, ['#e22a6f', "#24d5d8", '#ab8ce4']);
+            this.createDonutChart('morris-donut-example', $donutData, ['#e22a6f', "#24d5d8", '#ab8ce4', '#9fcd91']);
 
         },
         //init
