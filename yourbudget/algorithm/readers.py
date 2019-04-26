@@ -9,6 +9,22 @@ def only_digits(s):
             t += c
     return float(t)
 
+
+class DefaultReceiptReader:
+    @classmethod
+    def extract_info(cls, receipt):
+        extracted_data = ShoppingTrip()
+        return extracted_data
+
+
+class SosediReceiptReader:
+    @classmethod
+    def extract_info(cls, receipt):
+        extracted_data = ShoppingTrip()
+        return extracted_data
+
+
+# todo: rewrite completely
 class KoronaReceiptReader:
     @classmethod
     def extract_info(cls, receipt):

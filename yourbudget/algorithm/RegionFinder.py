@@ -16,6 +16,48 @@ class RegionFinder:
         return False
 
     @classmethod
+    def find_left_point(cls, n, m, matrix):
+        for i in range(n):
+            for j in range(m // 2):
+                if matrix[i][j] == 1:
+                    return i, j
+        return None
+
+    @classmethod
+    def find_right_point(cls, n, m, matrix):
+        for i in range(n):
+            for j in reversed(range(m // 2, m)):
+                if matrix[i][j] == 1:
+                    return i, j
+        return None
+
+    @classmethod
+    def find_clothest(cls, n, m, matrix, sx, sy):
+        used = set()
+
+        q = Queue()
+        q.put((sx, sy))
+
+        while not q.empty():
+            x, y = q.get()
+
+            if cls.valid(matrix, x, y):
+                return x, y
+            if (x, y) in used:
+                continue
+            if x < 0 or y < 0 or x >= n or y >= m:
+                continue
+
+            used.add((x, y))
+
+            for d in range(4):
+                dx, dy = DIRECTIONS[d]
+                nx, ny = x + dx, y + dy
+
+                q.put((nx, ny))
+        return None
+
+    @classmethod
     def find_regions(cls, n, m, matrix):
         """
         Breadth-first-search

@@ -1,4 +1,4 @@
-from algorithm.KoronaReceiptReader import KoronaReceiptParser
+from algorithm.readers import *
 from services.AutoJSONEncoder import AutoJSONEncoder
 from services.AutoJsonDecoder import AutoJSONDecoder
 from algorithm.ReceiptReader import ReceiptReader
@@ -13,7 +13,7 @@ class User:
         self.list_of_purchases = []
 
     def save_purchase_info(self, receipt_path):
-        receipt_data = KoronaReceiptParser.extract_info(ReceiptReader.convert_to_receipt(receipt_path))
+        receipt_data = KoronaReceiptReader.extract_info(ReceiptReader.convert_to_receipt(receipt_path))
         self.list_of_purchases.append(receipt_data)
 
         with open(self.data_file, "w") as write_file:
