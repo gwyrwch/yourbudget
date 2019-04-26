@@ -16,6 +16,12 @@ class RegionFinder:
         return False
 
     @classmethod
+    def border_cell(cls, x, y, n, m):
+        if x == 0 or y == 0 or x == n - 1 or y == m - 1:
+            return True
+        return False
+
+    @classmethod
     def find_left_point(cls, n, m, matrix):
         for i in range(n):
             for j in range(m // 2):
@@ -58,9 +64,17 @@ class RegionFinder:
         return None
 
     @classmethod
-    def find_regions(cls, n, m, matrix):
+    def find_regions(cls, n, m, matrix, start_from_border=False, return_visited=False):
         """
         Breadth-first-search
+
+        :param start_from_border
+            searches regions only starting from border
+        :param return_visited
+            returns used matrix
+
+        :returns
+            list of detected regions
         """
 
         used = [
@@ -75,6 +89,8 @@ class RegionFinder:
 
         for i in range(n):
             for j in range(m):
+                if start_from_border and not cls.border_cell(i, j, n, m):
+                    continue
                 if not used[i][j] and matrix[i][j] == 1:
                     x1, y1 = 10 ** 100, 10 ** 100
                     x2, y2 = -x1, -y1
@@ -109,6 +125,8 @@ class RegionFinder:
                             x1, y1, x2, y2, black_pixels_count
                         )
                     )
+        if return_visited:
+            return used
 
         return regions
 

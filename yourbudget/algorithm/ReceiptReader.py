@@ -1,8 +1,8 @@
 from PIL import Image, ImageDraw
 
-from algorithm.readers import *
 from algorithm.Region import Region
 from algorithm.Receipt import Receipt
+from algorithm.ShopDeducter import ShopDeducter
 from algorithm.RegionFinder import RegionFinder
 from algorithm.DistFunctionFabric import DistFunctionFabric
 from math import atan, pi
@@ -18,15 +18,6 @@ DEBUG = False
 USE_PYOCR = False
 USE_UPDATE = False
 
-def cut_noise(image):
-    threshold = 140
-    table = []
-    for i in range(256):
-        if i < threshold:
-            table.append(0)
-        else:
-            table.append(1)
-    return image.point(table, '1')
 
 class ReceiptReader:
     @classmethod
@@ -65,15 +56,28 @@ class ReceiptReader:
 
         return matrix
 
-    # todo: refactor
+    @staticmethod
+    def get_image_from_matrix(matrix):
+        return Image.fromarray(
+            numpy.asarray(
+                [
+                    [
+                        (1 - matrix[i][j]) * 255
+                        for j in range(len(matrix[i]))
+                    ]
+                    for i in range(len(matrix))
+                ], numpy.uint8
+            )
+        )
+
     @classmethod
     def find_unparsed_lines(cls, img):
         img = cls.rotate_image(img)
 
         matrix = cls.get_matrix_from_image(img)
-        m, n = img.size
+        m = img.size[0]
         matrix.append([0] * m)
-        n += 1
+        n = len(matrix)
 
         img_lines = []
         in_region = True
@@ -82,43 +86,17 @@ class ReceiptReader:
         for i in range(n):
             white_line = True
 
-            fp, lp = None, None
-
             for j in range(m):
-                if matrix[i][j] == 0:
-                    fp = j
-                    break
-
-            for j in range(m):
-                if matrix[i][j] == 0:
-                    lp = j
-
-            if fp is None:
-                white_line = False
-
-            if white_line:
-                for j in range(fp, lp + 1):
-                    if matrix[i][j] == 1:
-                        white_line = False
-
-            if lp - fp < m // 2:
-                white_line = False
+                if matrix[i][j] == 1:
+                    white_line = False
 
             if not white_line:
                 in_region = False
 
             if white_line and not in_region:
-                img_lines.append(Image.fromarray(
-                    numpy.asarray(
-                        [
-                            [
-                                255 if matrix[k][j] == 0 else 0
-                                for j in range(m)
-                            ]
-                            for k in range(last_line, i + 1)
-                        ], numpy.uint8
-                    )
-                ))
+                img_lines.append(
+                    cls.get_image_from_matrix(matrix[last_line:i+1])
+                )
 
                 in_region = True
                 last_line = i
@@ -179,49 +157,23 @@ class ReceiptReader:
         img = img.resize((newm, newn), Image.BOX)
         return img
 
-    availiable_readers = [
-        (u'ООО Либретик', SosediReceiptReader),
-        (u'ООО "ТАБАК ИНВЕСТ"', KoronaReceiptReader),
-        # todo biggz
-    ]
-
     @classmethod
-    def string_distance(cls, s1, s2):
-        if s1.count(s2):
-            return 1.0
+    def cut_border_noize(cls, img):
+        matrix = cls.get_matrix_from_image(img)
+        m, n = img.size
 
-        n, m = len(s1), len(s2)
+        used_in_bfs = RegionFinder.find_regions(
+            n, m, matrix,
+            start_from_border=True,
+            return_visited=True
+        )
 
-        dp = [
-            [0] * (m + 1)
-            for _ in range(n + 1)
-        ]
+        for i in range(n):
+            for j in range(m):
+                if used_in_bfs[i][j]:
+                    matrix[i][j] = 0
 
-        res = 0
-        for i in range(n + 1):
-            for j in range(m + 1):
-                if i == n and j == m:
-                    res = dp[i][j]
-                elif i == n or j == m:
-                    dp[n][m] = max(dp[n][m], dp[i][j])
-                else:
-                    dp[i + 1][j] = max(dp[i + 1][j], dp[i][j])
-                    dp[i][j + 1] = max(dp[i][j + 1], dp[i][j])
-                    if s1[i] == s2[j]:
-                        dp[i + 1][j + 1] = max(dp[i + 1][j + 1], dp[i][j] + 1)
-        print(res, len(s1))
-        return res / len(s1)
-
-    @classmethod
-    def deduct_shop(cls, raw_shop_name):
-        best_result = 0.5
-        best_reader = DefaultReceiptReader
-        for name, reader in cls.availiable_readers:
-            distance = cls.string_distance(name, raw_shop_name)
-            if distance > best_result:
-                best_result = distance
-                best_reader = reader
-        return best_reader
+        return cls.get_image_from_matrix(matrix)
 
     @classmethod
     def convert_to_receipt(cls, image_path):
@@ -234,10 +186,10 @@ class ReceiptReader:
         cv2.imwrite(filename, gray)
 
         # todo: обрезать
-        # todo: избавится от шума по краям
 
         receipt_img = Image.open(filename)
         receipt_img = cls.compress_image(receipt_img)
+        receipt_img = cls.cut_border_noize(receipt_img)
 
         lines = cls.find_unparsed_lines(receipt_img)
 
@@ -258,6 +210,6 @@ class ReceiptReader:
                 for l in lines[0:3]
             ])
 
-        reader = cls.deduct_shop(raw_shop_name)
+        reader = ShopDeducter.deduct_shop(raw_shop_name)
         print(reader)
         return reader.extract_info(Receipt(lines))
