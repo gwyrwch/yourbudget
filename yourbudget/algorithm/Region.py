@@ -23,3 +23,9 @@ class Region:
         return (
             (y - 5, x - 5), (y + 5, x + 5)
         )
+
+    @property
+    def flat_bounding_box(self):
+        pt1, pt2 = self.bounding_box
+        return pt1[0], pt1[1], pt2[0], pt2[1]
+

@@ -158,7 +158,7 @@ class ReceiptReader:
         return img
 
     @classmethod
-    def cut_border_noize(cls, img):
+    def remove_border_noize(cls, img):
         matrix = cls.get_matrix_from_image(img)
         m, n = img.size
 
@@ -173,23 +173,65 @@ class ReceiptReader:
                 if used_in_bfs[i][j]:
                     matrix[i][j] = 0
 
+        # todo
+
+        # todo: bound full image into box
+
         return cls.get_image_from_matrix(matrix)
+
+    @classmethod
+    def cut_receipt_from_raw_image(cls, img):
+        matrix = cls.get_matrix_from_image(img)
+        m, n = img.size
+
+        center_x = n // 2
+        center_y = m // 2
+
+        center_x, center_y = RegionFinder.find_closest(n, m, matrix, center_x, center_y, pixel=0)
+
+        receipt_region = RegionFinder.find_single_region(n, m, start_x=center_x,  start_y=center_y, matrix=matrix, pixel=0)
+
+        img = img.crop(receipt_region.flat_bounding_box)
+        return img
 
     @classmethod
     def convert_to_receipt(cls, image_path):
         image = cv2.imread(image_path)
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         gray = cv2.medianBlur(gray, 3)
-        gray = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
+        ret, gray = cv2.threshold(gray, 127, 255, 0)
+
+        contours, hierarchy = cv2.findContours(gray, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+        areas = [
+            cv2.contourArea(c)
+            for c in contours
+        ]
+
+        sorted_areas = sorted(zip(areas, contours), key=lambda x: x[0], reverse=True)
+        if not sorted_areas:
+            return None
+
+        receipt_contour = sorted_areas[0][1]
+
+        im2 = cv2.imread(image_path)
+        im2 = cv2.drawContours(im2, [receipt_contour], -1, (0,255,0), 2)
 
         filename = "{}.png".format("temp")
         cv2.imwrite(filename, gray)
 
-        # todo: обрезать
+        filename = "{}.png".format("temp_color")
+        cv2.imwrite(filename, im2)
+
+        exit(0)
 
         receipt_img = Image.open(filename)
         receipt_img = cls.compress_image(receipt_img)
-        receipt_img = cls.cut_border_noize(receipt_img)
+        receipt_img = cls.cut_receipt_from_raw_image(receipt_img)
+        receipt_img = cls.remove_border_noize(receipt_img)
+
+        receipt_img.show()
+        exit(0)
 
         lines = cls.find_unparsed_lines(receipt_img)
 

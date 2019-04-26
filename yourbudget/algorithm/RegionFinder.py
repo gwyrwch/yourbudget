@@ -1,5 +1,6 @@
 from queue import Queue
 from algorithm.Region import Region
+from math import inf
 
 DIRECTIONS = [
     [0, 1], [1, 0], [0, -1], [-1, 0]
@@ -8,10 +9,10 @@ DIRECTIONS = [
 
 class RegionFinder:
     @classmethod
-    def valid(cls, matrix, x, y):
+    def valid(cls, matrix, x, y,  pixel=1):
         if x < 0 or y < 0 or x >= len(matrix) or y >= len(matrix[x]):
             return False
-        if matrix[x][y] == 1:
+        if matrix[x][y] == pixel:
             return True
         return False
 
@@ -38,7 +39,7 @@ class RegionFinder:
         return None
 
     @classmethod
-    def find_clothest(cls, n, m, matrix, sx, sy):
+    def find_closest(cls, n, m, matrix, sx, sy, pixel):
         used = set()
 
         q = Queue()
@@ -47,7 +48,7 @@ class RegionFinder:
         while not q.empty():
             x, y = q.get()
 
-            if cls.valid(matrix, x, y):
+            if cls.valid(matrix, x, y, pixel):
                 return x, y
             if (x, y) in used:
                 continue
@@ -64,12 +65,66 @@ class RegionFinder:
         return None
 
     @classmethod
-    def find_regions(cls, n, m, matrix, start_from_border=False, return_visited=False):
+    def bfs(cls, n, m, start_x, start_y, matrix, pixel, used):
+        x1, y1 = inf, inf
+        x2, y2 = -x1, -y1
+
+        q = Queue()
+        q.put((start_x, start_y))
+
+        pixels_count = 0
+        while not q.empty():
+            x, y = q.get()
+
+            if type(used) is set:
+                if (x, y) in used:
+                    continue
+                used.add((x, y))
+            elif type(used) is list:
+                if used[x][y]:
+                    continue
+                used[x][y] = True
+            else:
+                raise TypeError('used must be matrix or set')
+
+            pixels_count += 1
+
+            x1 = min(x1, x)
+            y1 = min(y1, y)
+            x2 = max(x2, x)
+            y2 = max(y2, y)
+
+            for d in range(4):
+                dx, dy = DIRECTIONS[d]
+                nx, ny = x + dx, y + dy
+
+                if cls.valid(matrix, nx, ny, pixel):
+                    q.put((nx, ny))
+
+        return Region(
+            x1, y1, x2, y2, pixels_count
+        )
+
+    @classmethod
+    def find_single_region(cls, n, m, start_x, start_y, matrix, pixel):
+        reg = cls.bfs(n, m, start_x, start_y, matrix, pixel, used=set())
+        return reg
+
+    @classmethod
+    def find_regions(cls, n, m, matrix, pixel=1, start_from_border=False, return_visited=False):
         """
         Breadth-first-search
 
+        :param n
+            heigth of matrix
+        :param m
+            width of matrix
+        :param matrix
+            image converted to n x m matrix
         :param start_from_border
             searches regions only starting from border
+        :param pixel
+            function searches on regions completely from pixel
         :param return_visited
             returns used matrix
 
@@ -80,9 +135,9 @@ class RegionFinder:
         used = [
             [
                 False
-                for j in range(m)
+                for _ in range(m)
             ]
-            for i in range(n)
+            for _ in range(n)
         ]
 
         regions = []
@@ -92,39 +147,12 @@ class RegionFinder:
                 if start_from_border and not cls.border_cell(i, j, n, m):
                     continue
                 if not used[i][j] and matrix[i][j] == 1:
-                    x1, y1 = 10 ** 100, 10 ** 100
-                    x2, y2 = -x1, -y1
-
-                    q = Queue()
-                    q.put((i, j))
-
-                    black_pixels_count = 0
-                    while not q.empty():
-                        x, y = q.get()
-
-                        if used[x][y]:
-                            continue
-
-                        black_pixels_count += 1
-                        used[x][y] = True
-
-                        x1 = min(x1, x)
-                        y1 = min(y1, y)
-                        x2 = max(x2, x)
-                        y2 = max(y2, y)
-
-                        for d in range(4):
-                            dx, dy = DIRECTIONS[d]
-                            nx, ny = x + dx, y + dy
-
-                            if cls.valid(matrix, nx, ny):
-                                q.put((nx, ny))
-
                     regions.append(
-                        Region(
-                            x1, y1, x2, y2, black_pixels_count
+                        cls.bfs(
+                            n, m, start_x=i, start_y=j, matrix=matrix, pixel=1, used=used
                         )
                     )
+
         if return_visited:
             return used
 
