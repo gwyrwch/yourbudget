@@ -1,6 +1,7 @@
 from algorithm.ReceiptReader import ReceiptReader
 from datahandling.User import User
 import os
+import logging
 
 TESTS_PATH = 'yourbudget/algorithm/tests/'
 
@@ -21,11 +22,24 @@ def test_rotation():
 
 
 def test_biggz():
-    from PIL import Image
     path = TESTS_PATH + 'test_biggz.JPG'
     r = ReceiptReader.convert_to_receipt(path)
     exit(0)
 
+def optimize_tesseract():
+    from pytesseract import image_to_string as reader, image_to_boxes
+    from PIL import Image
+
+    test_path = TESTS_PATH + 'price.png'
+
+    img = Image.open(test_path)
+    text = reader(img)
+    print(text)
+    exit(0)
+
+
 if __name__ == '__main__':
-    test_biggz()
+    logging.basicConfig(filename="sample.log", level=logging.INFO)
+
+    optimize_tesseract()
 

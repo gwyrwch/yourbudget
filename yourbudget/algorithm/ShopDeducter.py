@@ -1,10 +1,12 @@
-from algorithm.readers import *
+from algorithm.readers import DefaultReceiptReader, KoronaReceiptReader, SosediReceiptReader
 
 
 class ShopDeducter:
     available_readers = [
         (u'ООО Либретик', SosediReceiptReader),
         (u'ООО "ТАБАК ИНВЕСТ"', KoronaReceiptReader),
+        (u'000 Либретик', SosediReceiptReader),
+        (u'000 "ТАБАК ИНВЕСТ"', KoronaReceiptReader),
         # todo biggz
     ]
 
@@ -33,7 +35,6 @@ class ShopDeducter:
                     if s1[i] == s2[j]:
                         dp[i + 1][j + 1] = max(dp[i + 1][j + 1], dp[i][j] + 1)
         return res / len(s1)
-
 
     @classmethod
     def deduct_shop(cls, raw_shop_name):

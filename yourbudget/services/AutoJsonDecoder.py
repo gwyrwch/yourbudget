@@ -10,6 +10,7 @@ def custom_object_hook(d):
     trip_obj.receipt_amount = d['receipt_amount']
     trip_obj.trip_date = d['trip_date']
     trip_obj.name_of_shop = d['name_of_shop']
+    trip_obj.address = d['address']
     return trip_obj
 
 

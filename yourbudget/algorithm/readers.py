@@ -1,6 +1,8 @@
 import re
+import logging
 from datahandling.ShoppingTrip import ShoppingTrip
-
+from algorithm.TextReader import *
+import time
 
 def only_digits(s):
     t = ''
@@ -12,53 +14,76 @@ def only_digits(s):
 
 class DefaultReceiptReader:
     @classmethod
-    def extract_info(cls, receipt):
+    def extract_info(cls, receipt, reader):
         extracted_data = ShoppingTrip()
         return extracted_data
 
 
 class SosediReceiptReader:
+    TOO_LARGE_LINE = 1.5
+    CENTER_RATE_THRESHOLD = 0.5
+
     @classmethod
-    def extract_info(cls, receipt):
+    def extract_info(cls, receipt, reader):
+        from algorithm.ReceiptReader import ReceiptReader
+
         extracted_data = ShoppingTrip()
+
+        extracted_data.name_of_shop = 'Соседи'
+        extracted_data.address = reader(receipt.img_lines[2], lang='rus')
+
+        avg_height = receipt.average_height
+
+        in_shoplist = False
+        i = -1
+
+        class EnumNeeds:
+            NAME = 0
+            PRICE = 1
+
+        what_we_need = EnumNeeds.NAME
+        last_purchase = []
+
+        for img_line in receipt.img_lines:
+            i += 1
+            center_rate = ReceiptReader.rate_center_area(img_line)
+            if center_rate > cls.CENTER_RATE_THRESHOLD:
+                if in_shoplist:
+                    break
+                in_shoplist = True
+            elif in_shoplist:
+                if img_line.size[1] > cls.TOO_LARGE_LINE * avg_height:
+                    number_of_lines = img_line.size[1] / avg_height
+                    number_of_lines = round(number_of_lines)
+
+                    logging.info('line {} is too large. it consists of {} lines'.format(i, number_of_lines))
+
+                    what_we_need += number_of_lines
+                    what_we_need %= 2
+
+                    last_purchase.clear()
+                else:
+                    last_purchase.append(img_line)
+                    if what_we_need == EnumNeeds.PRICE:
+                        if len(last_purchase) == 2:
+                            raw_name, raw_price = last_purchase
+
+                            # name.save('purchase_{}_name.png'.format(i))
+                            # raw_price.save('purchase_{}_price.png'.format(i))
+                            logging.info('created new purchase number {}'.format(i))
+
+                            extracted_data.list_of_purchases += [(raw_name, raw_price)]
+                        last_purchase.clear()
+                    what_we_need = (what_we_need + 1) % 2
+        extracted_data.list_of_purchases = TextReader.purchases_to_text(extracted_data.list_of_purchases, reader)
         return extracted_data
 
 
 # todo: rewrite completely
 class KoronaReceiptReader:
     @classmethod
-    def extract_info(cls, receipt):
+    def extract_info(cls, receipt, reader):
         extracted_data = ShoppingTrip()
-        # extracted_data.name_of_shop = 'Корона'
-        # extracted_data.trip_date = KoronaReceiptParser.find_data(receipt.info)
-        # extracted_data.receipt_discount = KoronaReceiptParser.find_discount(receipt.info)
-        # extracted_data.receipt_amount = KoronaReceiptParser.find_amount(receipt.info)
-
-        # for i in range(len(receipt.info)):
-        #     if receipt.info[i].count('=') and receipt.info[i].count(u'х'):
-        #         try:
-        #             name = receipt.info[i - 1]
-        #             print(receipt.info[i])
-        #             price, amount = map(only_digits, receipt.info[i].split()[1:3])
-        #
-        #             print(name)
-        #             print(price, amount)
-        #
-        #             extracted_data.list_of_purchases.append(
-        #                 (name, price * amount)
-        #             )
-        #         except:
-        #             pass
-        #     elif receipt.info[i].count('=') == 2:
-        #         try:
-        #             name = receipt.info[i - 1]
-        #             raw_price = receipt.info[i].split()[-1][1:]
-        #
-        #             extracted_data.list_of_purchases.append(
-        #                 (name, only_digits(raw_price))
-        #             )
-        #         except:
-        #             pass
 
         return extracted_data
 
@@ -70,20 +95,3 @@ class KoronaReceiptReader:
                 return data.group()
         return None
 
-    @classmethod
-    def find_discount(cls, text):
-        for line in text:
-            discount = re.search(r'ИТОГО СКИДКА', line)
-            if discount:
-                print(discount)
-                return discount.group()
-        return None
-
-    @classmethod
-    def find_amount(cls, text):
-        for line in text:
-            amount = re.search(r'ИТОГО К ОПЛАТЕ', line)
-            if amount:
-                return amount.group()
-
-        return None
