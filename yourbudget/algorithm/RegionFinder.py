@@ -9,7 +9,22 @@ DIRECTIONS = [
 
 class RegionFinder:
     @classmethod
-    def valid(cls, matrix, x, y,  pixel=1):
+    def valid(cls, matrix, x, y, pixel=1):
+        """
+        Checks whether the given point is in matrix and value is equal to pixel
+
+         :param matrix
+             image converted to n x m matrix
+         :param x
+             x-coordinate of point
+         :param y
+             y-coordinate of point
+         :param pixel
+            desired value of matrix[x][y]
+
+         :returns
+           True or False
+       """
         if x < 0 or y < 0 or x >= len(matrix) or y >= len(matrix[x]):
             return False
         if matrix[x][y] == pixel:
@@ -18,12 +33,40 @@ class RegionFinder:
 
     @classmethod
     def border_cell(cls, x, y, n, m):
+        """
+        Checks whether the given point is on border of matrix
+
+         :param x
+             x-coordinate of point
+         :param y
+             y-coordinate of point
+         :param n
+             height of matrix
+         :param m
+             width of matrix
+
+         :returns
+           True or False
+       """
         if x == 0 or y == 0 or x == n - 1 or y == m - 1:
             return True
         return False
 
     @classmethod
     def find_left_point(cls, n, m, matrix):
+        """
+        Finds some black pixel at the top-left part of the matrix
+
+         :param n
+             height of matrix
+         :param m
+             width of matrix
+         :param matrix
+             image converted to n x m matrix
+
+         :returns
+           (x, y) or None
+       """
         for i in range(n):
             for j in range(m // 2):
                 if matrix[i][j] == 1:
@@ -32,6 +75,19 @@ class RegionFinder:
 
     @classmethod
     def find_right_point(cls, n, m, matrix):
+        """
+        Finds some black pixel at the top-right part of the matrix
+
+         :param n
+             height of matrix
+         :param m
+             width of matrix
+         :param matrix
+             image converted to n x m matrix
+
+         :returns
+           (x, y) or None
+       """
         for i in range(n):
             for j in reversed(range(m // 2, m)):
                 if matrix[i][j] == 1:
@@ -40,6 +96,25 @@ class RegionFinder:
 
     @classmethod
     def find_closest(cls, n, m, matrix, sx, sy, pixel):
+        """
+          Breadth-first-search from a single point; finds first cell with value equal to pixel.
+
+          :param n
+              height of matrix
+          :param m
+              width of matrix
+          :param matrix
+              image converted to n x m matrix
+          :param sx
+              x-coordinate where to start
+          :param sy
+              y-coordinate where to start
+          :param pixel
+              finds first cell with value equal to this
+
+          :returns
+            (x, y) or None
+        """
         used = set()
 
         q = Queue()
@@ -66,6 +141,25 @@ class RegionFinder:
 
     @classmethod
     def bfs(cls, n, m, start_x, start_y, matrix, pixel, used):
+        """
+            Breadth-first-search from a single point (start_x, start_y)
+
+            :param n
+                height of matrix
+            :param m
+                width of matrix
+            :param start_x,
+                x-coordinate where to start
+            :param start_y
+                y-coordinate where to start
+            :param matrix
+                image converted to n x m matrix
+            :param pixel
+                function searches on regions completely from pixel
+
+            :returns
+                found Region
+        """
         x1, y1 = inf, inf
         x2, y2 = -x1, -y1
 
@@ -107,8 +201,7 @@ class RegionFinder:
 
     @classmethod
     def find_single_region(cls, n, m, start_x, start_y, matrix, pixel):
-        reg = cls.bfs(n, m, start_x, start_y, matrix, pixel, used=set())
-        return reg
+        return cls.bfs(n, m, start_x, start_y, matrix, pixel, used=set())
 
     @classmethod
     def find_regions(cls, n, m, matrix, pixel=1, start_from_border=False, return_visited=False):
@@ -116,7 +209,7 @@ class RegionFinder:
         Breadth-first-search
 
         :param n
-            heigth of matrix
+            height of matrix
         :param m
             width of matrix
         :param matrix

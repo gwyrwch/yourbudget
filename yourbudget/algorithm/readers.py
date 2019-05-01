@@ -1,7 +1,7 @@
 import re
 import logging
 from datahandling.ShoppingTrip import ShoppingTrip
-from algorithm.TextReader import *
+from algorithm.TextReader import TextReader, ContourFinder
 import time
 
 def only_digits(s):
@@ -15,13 +15,22 @@ def only_digits(s):
 class DefaultReceiptReader:
     @classmethod
     def extract_info(cls, receipt, reader):
+        """
+        Reads special type of
+
+        :param img
+            PIL gray image
+
+        :returns
+            compressed image
+        """
         extracted_data = ShoppingTrip()
         return extracted_data
 
 
 class SosediReceiptReader:
     TOO_LARGE_LINE = 1.5
-    CENTER_RATE_THRESHOLD = 0.5
+    CENTER_RATE_THRESHOLD = 0.4
 
     @classmethod
     def extract_info(cls, receipt, reader):
@@ -35,7 +44,6 @@ class SosediReceiptReader:
         avg_height = receipt.average_height
 
         in_shoplist = False
-        i = -1
 
         class EnumNeeds:
             NAME = 0
@@ -44,17 +52,18 @@ class SosediReceiptReader:
         what_we_need = EnumNeeds.NAME
         last_purchase = []
 
-        for img_line in receipt.img_lines:
-            i += 1
+        for img_line, i in zip(receipt.img_lines, range(len(receipt.img_lines))):
             center_rate = ReceiptReader.rate_center_area(img_line)
             if center_rate > cls.CENTER_RATE_THRESHOLD:
                 if in_shoplist:
+                    logging.info('finished shopping')
                     break
                 in_shoplist = True
+                logging.info('starting shopping')
             elif in_shoplist:
                 if img_line.size[1] > cls.TOO_LARGE_LINE * avg_height:
                     number_of_lines = img_line.size[1] / avg_height
-                    number_of_lines = round(number_of_lines)
+                    number_of_lines = int(number_of_lines + 0.5)
 
                     logging.info('line {} is too large. it consists of {} lines'.format(i, number_of_lines))
 
@@ -68,8 +77,9 @@ class SosediReceiptReader:
                         if len(last_purchase) == 2:
                             raw_name, raw_price = last_purchase
 
-                            # name.save('purchase_{}_name.png'.format(i))
-                            # raw_price.save('purchase_{}_price.png'.format(i))
+                            raw_name.save('result_lines/purchase_{}_name.png'.format(i))
+                            raw_price.save('result_lines/purchase_{}_price.png'.format(i))
+
                             logging.info('created new purchase number {}'.format(i))
 
                             extracted_data.list_of_purchases += [(raw_name, raw_price)]

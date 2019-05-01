@@ -23,6 +23,16 @@ USE_UPDATE = False
 class ReceiptReader:
     @staticmethod
     def get_matrix_from_image(img):
+        """
+        Converts image to 0/1 matrix
+
+        :param img
+            PIL gray image
+
+        :returns
+            image converted to n x m matrix
+        """
+
         # todo: use numpy everywhere
         matrix = numpy.asarray(img)
         m, n = img.size
@@ -39,6 +49,14 @@ class ReceiptReader:
 
     @staticmethod
     def get_image_from_matrix(matrix):
+        """
+        Converts 0/1 matrix to image
+
+        :param matrix
+            image converted to n x m matrix
+        :returns
+            PIL gray image
+        """
         return Image.fromarray(
             numpy.asarray(
                 [
@@ -53,16 +71,24 @@ class ReceiptReader:
 
     @classmethod
     def find_unparsed_lines(cls, img, **kwargs):
-        img = cls.rotate_image(img, **kwargs)
+        """
+        Splits an image with text into lines; rotates if necessary
+
+        :param img
+            PIL gray image
+        :param no_rotate
+            set this to True, if the image should not be rotated
+
+        :returns
+            list of PIL gray images -- lines of text
+        """
+        if not kwargs.get('no_rotate'):
+            img = cls.rotate_image(img, **kwargs)
 
         matrix = cls.get_matrix_from_image(img)
         m = img.size[0]
         matrix.append([0] * m)
         n = len(matrix)
-
-        if 'debug' in kwargs:
-            img.show()
-            print(n)
 
         img_lines = []
         in_region = True
@@ -96,6 +122,17 @@ class ReceiptReader:
 
     @classmethod
     def rotate_image(cls, img, **kwargs):
+        """
+        Rotates image with text using two points at the top; doesn't work with noisy images
+
+        :param img
+            PIL gray image
+        :param debug
+            set this to True, if you want to paint this point on the s
+
+        :returns
+            rotated img
+        """
         matrix = cls.get_matrix_from_image(img)
         m, n = img.size
 
@@ -105,7 +142,7 @@ class ReceiptReader:
         if left_point is None or right_point is None:
             return img
 
-        if DEBUG or 'debug' in kwargs:
+        if DEBUG or kwargs.get('debug'):
             draw = ImageDraw.Draw(img)
 
             print('Left point = ', left_point)
@@ -121,7 +158,7 @@ class ReceiptReader:
 
         angle = atan(dx / dy) / pi * 180
 
-        rot_img = img.rotate(angle, fillcolor=255)
+        rot_img = img.rotate(angle, expand=1, fillcolor=255)
 
         if DEBUG:
             rot_img.show()
@@ -130,20 +167,38 @@ class ReceiptReader:
 
     @classmethod
     def compress_image(cls, img):
-        BUBEN = 1440
+        """
+        Compresses too large image for speedup; makes image height equal to DESIRED_HEIGHT and saves proportion.
+
+        :param img
+            PIL gray image
+
+        :returns
+            compressed image
+        """
+        DESIRED_HEIGHT = 1440
 
         m, n = img.size
-        if n < BUBEN:
+        if n < DESIRED_HEIGHT:
             return img
 
-        newn = BUBEN
-        newm = int(1. * BUBEN / n * m)
+        height = DESIRED_HEIGHT
+        width = int(1. * DESIRED_HEIGHT / n * m)
 
-        img = img.resize((newm, newn), Image.BOX)
+        img = img.resize((width, height), Image.BOX)
         return img
 
     @classmethod
-    def remove_border_noize(cls, img):
+    def remove_border_noise(cls, img):
+        """
+        Removes noise from the border of the image. Works with shadows, smooth backgrounds
+
+        :param img
+            PIL gray image
+
+        :returns
+            image without noise
+        """
         matrix = cls.get_matrix_from_image(img)
         m, n = img.size
 
@@ -164,6 +219,15 @@ class ReceiptReader:
 
     @classmethod
     def cut_receipt_from_raw_image(cls, img):
+        """
+        Searches for region with receipt on the given image and crops the whole image to this region.
+
+        :param img
+            PIL gray image
+
+        :returns
+            cropped image
+        """
         matrix = cls.get_matrix_from_image(img)
         m, n = img.size
 
@@ -179,13 +243,23 @@ class ReceiptReader:
 
     @classmethod
     def rate_center_area(cls, img):
+        # fixme: replace this code
+
         matrix = cls.get_matrix_from_image(img)
         m, n = img.size
 
-        p = 0
-        q = 0
+        p, q = 0, 0
 
-        center_x = n // 2
+        fp, ls = -1, -1
+        for i in range(n):
+            if any(matrix[i]):
+                ls = i
+                if fp == -1:
+                    fp = i
+
+        center_x = (fp + ls) // 2
+        if center_x == -1:
+            return 0
 
         for i in range(n):
             for j in range(m):
@@ -193,11 +267,20 @@ class ReceiptReader:
                     if abs(i - center_x) < 2:
                         p += 1
                     q += 1
-
+        if p == 0:
+            img.show()
         return p / q
 
     @classmethod
     def convert_to_receipt(cls, image_path):
+        """
+        Takes a raw image and processes the full algorithm of extracting receipt data from it.
+
+        :param image_path
+            path to the photo of receipt
+        :returns
+            ShoppingTrip extracted from image
+        """
         image = cv2.imread(image_path)
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         gray = cv2.medianBlur(gray, 3)
@@ -209,9 +292,10 @@ class ReceiptReader:
         receipt_img = Image.open(filename)
         receipt_img = cls.compress_image(receipt_img)
         receipt_img = cls.cut_receipt_from_raw_image(receipt_img)
-        receipt_img = cls.remove_border_noize(receipt_img)
+        receipt_img = cls.remove_border_noise(receipt_img)
 
         image_lines = cls.find_unparsed_lines(receipt_img)
+        logging.info('i found {} lines'.format(len(image_lines)))
         for i in range(len(image_lines)):
             image_lines[i].save('result_lines/line{}.png'.format(i))
 

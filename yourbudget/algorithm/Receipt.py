@@ -4,5 +4,5 @@ class Receipt:
 
     @property
     def average_height(self):
-        res = sum(map(lambda x: x.size[1], self.img_lines))
-        return res // len(self.img_lines)
+        res = sorted(map(lambda x: x.size[1], self.img_lines))
+        return res[len(res) // 2]

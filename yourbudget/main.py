@@ -26,20 +26,25 @@ def test_biggz():
     r = ReceiptReader.convert_to_receipt(path)
     exit(0)
 
+
 def optimize_tesseract():
     from pytesseract import image_to_string as reader, image_to_boxes
     from PIL import Image
+    from algorithm.TextReader import TextReader
 
     test_path = TESTS_PATH + 'price.png'
 
     img = Image.open(test_path)
-    text = reader(img)
-    print(text)
+
+    TextReader.split_into_columns(img)
+
     exit(0)
 
 
 if __name__ == '__main__':
     logging.basicConfig(filename="sample.log", level=logging.INFO)
 
-    optimize_tesseract()
+    # optimize_tesseract()
+    test_last()
+
 
