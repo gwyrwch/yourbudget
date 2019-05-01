@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+{% load static %}
+
 <html>
   <head>
     <meta charset="utf-8">
@@ -6,13 +9,13 @@
     <title>Inspire - Admin and Dashboard Template</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/bootstrap.min.css" %}">
     <!-- Fonts -->
-    <link rel="stylesheet" type="text/css" href="assets/fonts/line-icons.css">
+    <link rel="stylesheet" type="text/css" href="{% static "assets/fonts/line-icons.css" %}">
     <!-- Main Style -->
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/main.css" %}">
     <!-- Responsive Style -->
-    <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/responsive.css" %}">
 
   </head>
 
@@ -26,7 +29,7 @@
                 <h1 class="error-number">404</h1>
                 <h2 class="semi-bold">This page is not found.</h2>
                 <p class="p-b-10">Sorry, this page doesn't exist.</p>
-                <div><a href="index.html" class="btn btn-common btn-rounded btn-lg">Back to dashboard</a></div>
+                <div><a href="" class="btn btn-common btn-rounded btn-lg">Back to dashboard</a></div>
               </div>
             </div>
           </div>
@@ -41,11 +44,11 @@
     <!-- End Preloader -->
 
      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="assets/js/jquery-min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/jquery.app.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="{% static "assets/js/jquery-min.js" %}"></script>
+    <script src="{% static "assets/js/popper.min.js" %}"></script>
+    <script src="{% static "assets/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "assets/js/jquery.app.js" %}"></script>
+    <script src="{% static "assets/js/main.js" %}"></script>
 
   </body>
 </html>

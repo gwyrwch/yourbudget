@@ -123,7 +123,7 @@ File: morris init js
             { y: '2026', a: 75, b: 65 },
             { y: '2027', a: 80, b: 70 }
           ];
-        this.createLineChart('morris-line-example', $data, 'y', ['a', 'b'], ['Sales', 'Revenue'], ['#e22a6f', '#0097a7']);
+        this.createLineChart('morris-line-example', $data, 'y', ['a', 'b'], ['Sales', 'Revenue'], ['#f78fb3', '#0097a7']);
 
         //creating area chart
         var $areaData = [
@@ -138,7 +138,7 @@ File: morris init js
             {y: '2026', a: 75, b: 65},
             {y: '2027', a: 80, b: 70}
         ];
-        this.createAreaChart('morris-area-example', 0, 0, $areaData, 'y', ['a', 'b'], ['Series A', 'Series B'], ['#e22a6f', '#24d5d8']);
+        this.createAreaChart('morris-area-example', 0, 0, $areaData, 'y', ['a', 'b'], ['Series A', 'Series B'], ['#f78fb3', '#f5cd79']);
 
         //creating bar chart
         var $barData = [
@@ -153,7 +153,7 @@ File: morris init js
             {y: '2026', a: 75, b: 65},
             {y: '2027', a: 80, b: 70}
         ];
-        this.createBarChart('morris-bar-example', $barData, 'y', ['a', 'b'], ['Series A', 'Series B'], ['#e22a6f', '#24d5d8']);
+        this.createBarChart('morris-bar-example', $barData, 'y', ['a', 'b'], ['Series A', 'Series B'], ['#f78fb3', '#f5cd79F']);
 
         //creating Stacked chart
         var $stckedData  = [
@@ -171,7 +171,7 @@ File: morris init js
             { y: '2029', a: 80, b: 65},
             { y: '2030', a: 70, b: 60}
         ];
-        this.createStackedChart('morris-bar-stacked', $stckedData, 'y', ['a', 'b'], ['Series A', 'Series B'], ['#e22a6f','#24d5d8']);
+        this.createStackedChart('morris-bar-stacked', $stckedData, 'y', ['a', 'b'], ['Series A', 'Series B'], ['#e22a6f','#f5cd79']);
 
         //creating donut chart
         var $donutData = [
@@ -179,7 +179,7 @@ File: morris init js
             {label: "In-Store Sales", value: 30},
             {label: "Mail-Order Sales", value: 20}
         ];
-        this.createDonutChart('morris-donut-example', $donutData, ['#ffbb44', '#e22a6f', '#24d5d8']);
+        this.createDonutChart('morris-donut-example', $donutData, ['#ffbb44', '#e22a6f', '#f5cd79']);
 
         //creating donut chart Dark
         var $donutData1 = [

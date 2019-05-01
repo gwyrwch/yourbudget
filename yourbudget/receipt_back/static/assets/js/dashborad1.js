@@ -49,7 +49,7 @@ File: dashborad1 js
             ];
 
             // FIXME: Graphic on the tops
-            this.createBarChart('morris-bar-example', $barData, 'y', ['a', 'b', 'c'], ['Корона', 'Соседи', 'Пятый элемент'], ['#e22a6f','#24d5d8', '#ab8ce4']);
+            this.createBarChart('morris-bar-example', $barData, 'y', ['a', 'b', 'c'], ['Корона', 'Соседи', 'Пятый элемент'], ['#f78fb3','#f5cd79', '#74b9ff']);
 
             //creating donut chart for dashboard-1
             var $donutData = [
@@ -58,7 +58,7 @@ File: dashborad1 js
                 {label: "Food", value: 5},
                 {label: "Electronics", value: 4},
             ];
-            this.createDonutChart('morris-donut-example', $donutData, ['#e22a6f', "#24d5d8", '#ab8ce4', '#9fcd91']);
+            this.createDonutChart('morris-donut-example', $donutData, ['#f78fb3', "#f5cd79", '#74b9ff', '#9fcd91']);
 
         },
         //init

@@ -5,6 +5,7 @@
 #include <deque>
 #include <algorithm>
 #include <fstream>
+#include <exception>
 
 using namespace std;
 
@@ -52,9 +53,13 @@ void convert(const string& path) {
 		cout << e << "\n";
 }
 
-int main() {
+int main(int argc, char** argv) {
 	ios_base::sync_with_stdio(0);
+    if (argc != 2) {
+        throw runtime_error("Parameter (path to html) missing");
+    }
 
-	convert("index.html");
+    string s = argv[1];
+	convert(s);
 	return 0;
 }

@@ -20,5 +20,5 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('receipt_back/', include('receipt_back.urls'))
+    path('receipt_back/', include('receipt_back.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
