@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+  <head>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Inspire - Admin and Dashboard Template</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/bootstrap.min.css" %}">
+    <!-- Fonts -->
+    <link rel="stylesheet" type="text/css" href="{% static "assets/fonts/line-icons.css" %}">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/main.css" %}">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/responsive.css" %}">
+
+  </head>
+
+  <body>
+    <div class="layout">
+      <div class="container">
+          <!-- Content Wrapper START -->
+          <div class="main-content">
+            <div class="container-fluid">
+              <!-- Breadcrumb Start -->
+              <div class="breadcrumb-wrapper row">
+                <div class="col-12 col-lg-3 col-md-6">
+                  <h4 class="page-title">Form Elements</h4>
+                </div>
+                <div class="col-12 col-lg-9 col-md-6">
+                  <ol class="breadcrumb float-right">
+                    <li><a href="index.html">Forms</a></li>
+                    <li class="active"> / Form elements</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- Breadcrumb End -->
+            </div>
+
+            <div class="container-fluid">
+              <div class="row">
+
+                <div class="col-lg-6 col-md-12 col-xs-12">
+                  <div class="card">
+                    <div class="card-header border-bottom">
+                      <h4 class="card-title">Login to yourbudget</h4>
+                    </div>
+                    <div class="card-body">
+                      <p class="card-description">
+                        Please enter your username and password
+                      </p>
+                      <form method="post" class="forms-sample">
+                        {% csrf_token %}
+
+                        <div class="form-group row">
+                          <label for="usernameOrEmail" class="col-sm-3 col-lg-4 col-form-label">Username or email</label>
+                          <div class="col-sm-9 col-lg-8">
+                            <input type="text" class="form-control" id="usernameOrEmail" name="usernameOrEmail" placeholder="Username or email">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="password" class="col-sm-3 col-lg-4 col-form-label">Password</label>
+                          <div class="col-sm-9 col-lg-8">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                          </div>
+                        </div>
+                        <div class="custom-control custom-checkbox m-b-20">
+                          <input type="checkbox" class="custom-control-input" id="checkbox1" name="rememberMe" value="check">
+                          <label class="custom-control-label" for="checkbox1">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-common mr-3">Login</button>
+                        <!--<button class="btn btn-light">Cancel</button>-->
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- Content Wrapper END -->
+
+          <!-- Footer START -->
+          <footer class="content-footer">
+            <div class="footer">
+              <div class="copyright">
+                <span>Copyright © 2018 <b class="text-dark">UIdeck</b>. All Right Reserved</span>
+                <span class="go-right">
+                  <a href="" class="text-gray">Term &amp; Conditions</a>
+                  <a href="" class="text-gray">Privacy &amp; Policy</a>
+                </span>
+              </div>
+            </div>
+          </footer>
+          <!-- Footer END -->
+        </div>
+    </div>
+
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="loader" id="loader-1"></div>
+    </div>
+    <!-- End Preloader -->
+
+     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static "assets/js/jquery-min.js" %}"></script>
+    <script src="{% static "assets/js/popper.min.js" %}"></script>
+    <script src="{% static "assets/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "assets/js/jquery.app.js" %}"></script>
+    <script src="{% static "assets/js/main.js" %}"></script>
+
+  </body>
+</html>

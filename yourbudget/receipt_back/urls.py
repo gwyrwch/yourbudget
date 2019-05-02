@@ -5,5 +5,6 @@ from . import views
 handler404 = 'receipt_back.views.not_found'
 
 urlpatterns = [
-    path('index', views.index, name='index')
+    path('index', views.index, name='index'),
+    path('login', views.LoginView.as_view(), name='login_view')
 ]
