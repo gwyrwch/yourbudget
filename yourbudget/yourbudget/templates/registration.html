@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+  <head>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Inspire - Admin and Dashboard Template</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/bootstrap.min.css" %}">
+    <!-- Fonts -->
+    <link rel="stylesheet" type="text/css" href="{% static "assets/fonts/line-icons.css" %}">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/main.css" %}">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/responsive.css" %}">
+
+  </head>
+
+  <body>
+    <div class="layout">
+      <div class="container">
+          <!-- Content Wrapper START -->
+          <div class="main-content">
+            <div class="container-fluid">
+              <!-- Breadcrumb Start -->
+              <div class="breadcrumb-wrapper row">
+                <div class="col-12 col-lg-3 col-md-6">
+                  <!-- todo: make a pic instead of text -->
+                  <h4 class="page-title">yourbudget</h4>
+                </div>
+
+              </div>
+              <!-- Breadcrumb End -->
+            </div>
+
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-12 grid-margin">
+                  <div class="card">
+                    <div class="card-header border-bottom">
+                      <h4 class="card-title">Registration form</h4>
+                    </div>
+                    <div class="card-body">
+                      <form class="form-sample" method="post">
+                          {% csrf_token %}
+                        <p class="card-description">
+                          Personal info
+                        </p>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label">First name</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" name="first-name">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label">Date of Birth</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" placeholder="dd/mm/yyyy" name="date-of-birth">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label">Last name</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" name="last-name">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label">Gender</label>
+                              <div class="col-sm-9">
+                                <select class="form-control" name="gender">
+                                  <option>Male</option>
+                                  <option>Female</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label">Username</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" name="username">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label">Email</label>
+                              <div class="col-sm-9">
+                                <!--todo: change placeholder to email  -->
+                                <input class="form-control" placeholder="user@kek.com" name="email">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <p class="card-description">
+                          Address
+                        </p>
+
+                        <div class="row">
+                              <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label">Country</label>
+                              <div class="col-sm-9">
+                                <select class="form-control" name="country">
+                                  <option>Belarus</option>
+                                  <option>Russia</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label">City</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" name="city">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-common mr-3">Register</button>
+                        <button class="btn btn-light">Cancel</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- Content Wrapper END -->
+
+          <!-- Footer START -->
+          <footer class="content-footer">
+            <div class="footer">
+              <div class="copyright">
+                <span>Copyright © 2018 <b class="text-dark">UIdeck</b>. All Right Reserved</span>
+                <span class="go-right">
+                  <a href="" class="text-gray">Term &amp; Conditions</a>
+                  <a href="" class="text-gray">Privacy &amp; Policy</a>
+                </span>
+              </div>
+            </div>
+          </footer>
+          <!-- Footer END -->
+        </div>
+    </div>
+
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="loader" id="loader-1"></div>
+    </div>
+    <!-- End Preloader -->
+
+     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static "assets/js/jquery-min.js" %}"></script>
+    <script src="{% static "assets/js/popper.min.js" %}"></script>
+    <script src="{% static "assets/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "assets/js/jquery.app.js" %}"></script>
+    <script src="{% static "assets/js/main.js" %}"></script>
+
+  </body>
+</html>
