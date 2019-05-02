@@ -8,7 +8,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Inspire - Admin and Dashboard Template</title>
+    <title>yourbudget web</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="{% static "assets/css/bootstrap.min.css" %}">
@@ -33,7 +33,11 @@
                   <!-- todo: make a pic instead of text -->
                   <h4 class="page-title">yourbudget</h4>
                 </div>
-
+                <div class="col-12 col-lg-9 col-md-6">
+                  <ol class="breadcrumb float-right">
+                    <li><a href="login">Already registered?</a></li>
+                  </ol>
+                </div>
               </div>
               <!-- Breadcrumb End -->
             </div>
@@ -93,12 +97,31 @@
                         <div class="row">
                           <div class="col-md-6">
                             <div class="form-group row">
+                              <label class="col-sm-3 col-form-label" for="password1">Password</label>
+                              <div class="col-sm-9">
+                                <input type="password" class="form-control" id="password1" placeholder="Password" name="password1">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
                               <label class="col-sm-3 col-form-label">Username</label>
                               <div class="col-sm-9">
                                 <input type="text" class="form-control" name="username">
                               </div>
                             </div>
                           </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label" for="password2">Confirm Password</label>
+                              <div class="col-sm-9">
+                                <input type="password" class="form-control" id="password2" placeholder="Password" name="password2">
+                              </div>
+                            </div>
+                          </div>
+
                           <div class="col-md-6">
                             <div class="form-group row">
                               <label class="col-sm-3 col-form-label">Email</label>
@@ -150,7 +173,7 @@
           <footer class="content-footer">
             <div class="footer">
               <div class="copyright">
-                <span>Copyright © 2018 <b class="text-dark">UIdeck</b>. All Right Reserved</span>
+                <span>Copyright © 2019 <b class="text-dark">yourbudget inc</b>. All Right Reserved</span>
                 <span class="go-right">
                   <a href="" class="text-gray">Term &amp; Conditions</a>
                   <a href="" class="text-gray">Privacy &amp; Policy</a>

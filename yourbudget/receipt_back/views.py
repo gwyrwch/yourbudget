@@ -1,8 +1,11 @@
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
+from django.db import IntegrityError
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.views import View
-from django.contrib.auth.models import User
+from receipt_back.models import User
 
 
 def index(request):
@@ -40,6 +43,11 @@ class LoginView(View):
             return a
 
 
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect(redirect_to='login')
+
+
 class RegistrationView(View):
     def get(self, request):
         return render(request, 'registration.html')
@@ -55,12 +63,20 @@ class RegistrationView(View):
         city = result.get('city')
         country = result.get('country')
 
+        password1 = result.get('password1')
+        password2 = result.get('password2')
+
         try:
+            if password1 != password2:
+                raise ValueError("Passwords don't match")
+
+            password = password1
+            validate_password(password)
+
             user = User.objects.create_user(
                 username,
                 email,
-                password='',
-                # password1 password2
+                password,
                 first_name=first_name,
                 last_name=last_name,
                 gender=gender,
@@ -68,10 +84,24 @@ class RegistrationView(View):
                 country=country,
                 city=city
             )
+
             return HttpResponseRedirect(redirect_to='login')
-        except:
+        except (ValueError, ):
+            # Value error in create_user(), or passwords dont match
+
             a = HttpResponse()
             a.status_code = 400
             return a
+        except IntegrityError:
+            # Duplicate
+            a = HttpResponse()
+            a.status_code = 402
+            return a
+        except ValidationError:
+            # Bad password
+            a = HttpResponse()
+            a.status_code = 401
+            return a
+
 
 
