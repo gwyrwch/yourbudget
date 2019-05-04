@@ -239,10 +239,10 @@ class RegionFinder:
             for j in range(m):
                 if start_from_border and not cls.border_cell(i, j, n, m):
                     continue
-                if not used[i][j] and matrix[i][j] == 1:
+                if not used[i][j] and matrix[i][j] == pixel:
                     regions.append(
                         cls.bfs(
-                            n, m, start_x=i, start_y=j, matrix=matrix, pixel=1, used=used
+                            n, m, start_x=i, start_y=j, matrix=matrix, pixel=pixel, used=used
                         )
                     )
 

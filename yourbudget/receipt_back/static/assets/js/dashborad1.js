@@ -37,28 +37,50 @@ File: dashborad1 js
         },
 
         Dashboard.prototype.init = function () {
+            var th = this;
 
-            //creating bar chart for dashboard-1
-            var $barData = [
-                { y: '2018', a: 50,  b: 100 , c: 65 },
-                { y: '2019', a: 45,  b: 85 , c: 90 },
-                { y: '2020', a: 100, b: 60 , c: 54 },
-                { y: '2021', a: 85, b: 75 , c: 55 },
-                { y: '2022', a: 90, b: 80 , c: 70 },
-                { y: '2023', a: 70, b: 90 , c: 60 }
-            ];
+            var create_chart_1 = function(callback) {
+                $.get('current_data?chart=overview', function(data) {
+//              fixme: don't know why this works
+//                    var $barData = [];
+//
+//                    var len = data.length;
+//                    for (var i = 0; i < len; i++) {
+//                        $barData.push({
+//                            y: data[i]['y'],
+//                            a: data[i]['a'],
+//                            b: data[i]['b'],
+//                            c: data[i]['c']
+//                        });
+//                    }
 
-            // FIXME: Graphic on the tops
-            this.createBarChart('morris-bar-example', $barData, 'y', ['a', 'b', 'c'], ['Корона', 'Соседи', 'Пятый элемент'], ['#f78fb3','#f5cd79', '#74b9ff']);
+                    if (callback)
+                        callback(data['overview'], data['top3']);
+                }, "json");
+            };
+
+            create_chart_1(function($data, $top3){
+                th.createBarChart('morris-bar-example', $data, 'y', ['a', 'b', 'c'], $top3, ['#f78fb3','#f5cd79', '#74b9ff']);
+            });
+
+            var create_chart_2 = function(callback) {
+                $.get('current_data?chart=categorization', function(data) {
+                    if (callback)
+                        callback(data);
+                }, "json");
+            };
+
+            create_chart_2(function($data){
+                th.createDonutChart('morris-donut-example', $data, ['#f78fb3', "#f5cd79", '#74b9ff', '#9fcd91']);
+            });
 
             //creating donut chart for dashboard-1
-            var $donutData = [
-                {label: "Grocery", value: 62},
-                {label: "Clothes", value: 29},
-                {label: "Food", value: 5},
-                {label: "Electronics", value: 4},
-            ];
-            this.createDonutChart('morris-donut-example', $donutData, ['#f78fb3', "#f5cd79", '#74b9ff', '#9fcd91']);
+//            var $donutData = [
+//                {label: "Grocery", value: 62},
+//                {label: "Clothes", value: 29},
+//                {label: "Food", value: 5},
+//                {label: "Electronics", value: 4},
+//            ];
 
         },
         //init

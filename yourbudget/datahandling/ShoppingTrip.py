@@ -1,5 +1,6 @@
 import json
 
+
 class ShoppingTrip:
     def __init__(self):
         self.name_of_shop = None
@@ -7,6 +8,7 @@ class ShoppingTrip:
         self.receipt_amount = None
         self.receipt_discount = None
         self.address = None
+        self.category = None
         self.list_of_purchases = []
 
     def _json(self):
@@ -16,6 +18,7 @@ class ShoppingTrip:
             'receipt_amount': self.receipt_amount,
             'receipt_discount': self.receipt_discount,
             'list_of_purchases': self.list_of_purchases,
+            'category': self.category,
             'address':  self.address
         }
 
@@ -26,9 +29,9 @@ class ShoppingTrip:
             u'Сумма в чеке': self.receipt_amount,
             u'Скидка': self.receipt_discount,
             u'Список покупок': self.list_of_purchases,
+            u'Категория': self.category,
             u'Адрес': self.address
         }
 
         return json.dumps(d, ensure_ascii=False)
-
 

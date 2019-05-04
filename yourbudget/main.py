@@ -1,5 +1,6 @@
 from algorithm.ReceiptReader import ReceiptReader
-from datahandling.User import User
+from datahandling.ShoppingTrip import ShoppingTrip
+from datahandling.UserData import UserData
 import os
 import logging
 
@@ -41,7 +42,18 @@ def optimize_tesseract():
     exit(0)
 
 
+def test_json_decoder():
+    a = UserData.get_history('temp_user')
+    for i in a.all_trips:
+        print(i)
+    exit(0)
+
+
 if __name__ == '__main__':
+    # print(ShoppingTrip().__setattr__())
+    # test_json_decoder()
+    # exit(0)
+
     logging.basicConfig(filename="sample.log", level=logging.INFO)
 
     # optimize_tesseract()

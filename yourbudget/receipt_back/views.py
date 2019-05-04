@@ -2,25 +2,52 @@ from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, HttpResponseBadRequest, HttpRequest
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
+
+from datahandling.UserData import UserData
 from receipt_back.models import User
+from services import next_power_of_two, get_percent
 
 
 def index(request):
     current_user = request.user
     if current_user is None or not current_user.is_authenticated:
         return HttpResponseRedirect(redirect_to='login')
+
+    history = UserData.get_history(current_user.username)
+
+    registered_shopping_trips = len(history.all_trips)
+    total_spend_amount = sum(trip.receipt_amount for trip in history.all_trips)
+    total_discount = sum(trip.receipt_discount for trip in history.all_trips)
+    all_purchases = sum(len(trip.list_of_purchases) for trip in history.all_trips)
+
     return render(
         request, 'index.html', context={
-            'full_name': current_user.get_full_name()
+            'full_name': current_user.get_full_name(),
+            'top3': history.top_three(),
+            'progress_bar_data': {
+                'registered_shopping_trips': registered_shopping_trips,
+                'registered_shopping_trips_percent': get_percent(registered_shopping_trips),
+                'total_spend_amount': total_spend_amount,
+                'total_spend_amount_percent': get_percent(total_spend_amount),
+                'total_discount': total_discount,
+                'total_discount_percent': get_percent(total_discount),
+                'all_purchases': all_purchases,
+                'all_purchases_percent': get_percent(all_purchases)
+            }
         }
     )
 
 
 def not_found(request, exception):
     return render(request, '404.html')
+
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect(redirect_to='login')
 
 
 class LoginView(View):
@@ -41,11 +68,6 @@ class LoginView(View):
             a = HttpResponse()
             a.status_code = 400
             return a
-
-
-def logout_view(request):
-    logout(request)
-    return HttpResponseRedirect(redirect_to='login')
 
 
 class RegistrationView(View):
@@ -104,4 +126,30 @@ class RegistrationView(View):
             return a
 
 
+def get_current_data(request):
+    current_user = request.user
+    chart = request.GET.get('chart')
 
+    if not current_user.is_authenticated:
+        return HttpResponseBadRequest()
+
+    history = UserData.get_history(current_user.username)
+
+    if chart == 'overview':
+        overview, top_three = history.get_data_for_overview()
+        return JsonResponse({
+            'overview': overview,
+            'top3': top_three
+        })
+    elif chart == 'categorization':
+        categorization = history.get_data_for_categorization()
+        return JsonResponse(
+            # categorization
+            [
+            {"label": "Grocery", "value": 62},
+            {"label": "Clothes", "value": 29},
+            {"label": "Food", "value": 5},
+            {"label": "Electronics", "value": 4},
+        ], safe=False)
+    else:
+        return HttpResponseBadRequest()
