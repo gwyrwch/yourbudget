@@ -8,10 +8,13 @@ from django.views import View
 
 from datahandling.UserData import UserData
 from receipt_back.models import User
-from services import next_power_of_two, get_percent
+from services import get_percent
 
 
 def index(request):
+    from mongoengine import connect
+    connect('myNewDatabase')
+
     current_user = request.user
     if current_user is None or not current_user.is_authenticated:
         return HttpResponseRedirect(redirect_to='login')

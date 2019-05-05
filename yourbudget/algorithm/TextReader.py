@@ -2,8 +2,18 @@ import cv2, numpy
 from PIL import Image
 import logging
 
+from datahandling.ShoppingTrip import Purchase
+
 
 class TextReader:
+    @staticmethod
+    def convert_to_float(str_price):
+        # todo
+        try:
+            return float(str_price)
+        except:
+            return 0
+
     @classmethod
     def purchases_to_text(cls, purchases, reader):
         logging.info('start reading text')
@@ -20,7 +30,8 @@ class TextReader:
                 cls.digit_read(reader, single_digit_png)
                 for single_digit_png in price_splitted
             )
-            result.append((reader(name, lang='rus'), price))
+            price = cls.convert_to_float(price)
+            result.append(Purchase(name_of_product=reader(name, lang='rus'), price=price))
 
         print(result)
         return result

@@ -1,7 +1,5 @@
 from algorithm.readers import *
 from datahandling.ShoppingHistory import ShoppingHistory
-from services.AutoJSONEncoder import AutoJSONEncoder
-from services.AutoJsonDecoder import decoder_fabric
 from algorithm.ReceiptReader import ReceiptReader
 import json
 import os
@@ -10,17 +8,13 @@ import os
 class UserData:
     @staticmethod
     def get_history(username):
-        data_file = ''.join([username, '_data', '.json'])
-        try:
-            with open(data_file, 'r') as read_file:
-                data = json.load(read_file, cls=decoder_fabric(ShoppingTrip))
-                assert type(data) == list
-                return ShoppingHistory(data)
-        except:
-            print(os.system('pwd'))
-
-            print('kek', data_file)
-            return ShoppingHistory([])
+        sh = ShoppingHistory.objects(username=username)
+        if sh.count() == 0:
+            sh = ShoppingHistory(username=username)
+            sh.save()
+            return sh
+        else:
+            return sh.get()
 
     # def save_purchase_info(self, receipt_path):
     #     receipt_data = KoronaReceiptReader.extract_info(ReceiptReader.convert_to_receipt(receipt_path))
