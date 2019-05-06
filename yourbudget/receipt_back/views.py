@@ -2,7 +2,7 @@ from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, HttpResponseBadRequest, HttpRequest
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, HttpResponseBadRequest
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
 
@@ -87,6 +87,7 @@ class RegistrationView(View):
         email = result.get('email')
         city = result.get('city')
         country = result.get('country')
+        telegram_username = result.get('telegram_username')
 
         password1 = result.get('password1')
         password2 = result.get('password2')
@@ -107,7 +108,8 @@ class RegistrationView(View):
                 gender=gender,
                 date_of_birth=date_of_birth,
                 country=country,
-                city=city
+                city=city,
+                telegram_username=telegram_username
             )
 
             return HttpResponseRedirect(redirect_to='login')
@@ -127,32 +129,3 @@ class RegistrationView(View):
             a = HttpResponse()
             a.status_code = 401
             return a
-
-
-def get_current_data(request):
-    current_user = request.user
-    chart = request.GET.get('chart')
-
-    if not current_user.is_authenticated:
-        return HttpResponseBadRequest()
-
-    history = UserData.get_history(current_user.username)
-
-    if chart == 'overview':
-        overview, top_three = history.get_data_for_overview()
-        return JsonResponse({
-            'overview': overview,
-            'top3': top_three
-        })
-    elif chart == 'categorization':
-        categorization = history.get_data_for_categorization()
-        return JsonResponse(
-            # categorization
-            [
-            {"label": "Grocery", "value": 62},
-            {"label": "Clothes", "value": 29},
-            {"label": "Food", "value": 5},
-            {"label": "Electronics", "value": 4},
-        ], safe=False)
-    else:
-        return HttpResponseBadRequest()
