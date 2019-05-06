@@ -1,6 +1,4 @@
 from json import JSONDecoder
-from datahandling.ShoppingTrip import ShoppingTrip
-import requests
 
 
 def decoder_fabric(cls):

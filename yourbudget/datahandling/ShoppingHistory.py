@@ -1,5 +1,7 @@
 import itertools
 from datetime import datetime
+import mongoengine
+from datahandling.ShoppingTrip import ShoppingTrip
 
 map_month = [
       'Jan',
@@ -17,13 +19,13 @@ map_month = [
 ]
 
 
-class ShoppingHistory:
-    def __init__(self, all_trips):
-        self.all_trips = all_trips
+class ShoppingHistory(mongoengine.Document):
+    username = mongoengine.StringField(primary_key=True)
+    all_trips = mongoengine.EmbeddedDocumentListField(ShoppingTrip, default=[])
 
     @staticmethod
-    def get_date(raw_date):
-        d, m, y = raw_date.split('-')
+    def get_date(date):
+        d, m, y = date.day, date.month, date.year
         return int(y), int(m)
 
     def top_three(self):

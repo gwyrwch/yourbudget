@@ -1,6 +1,6 @@
 import re
 import logging
-from datahandling.ShoppingTrip import ShoppingTrip
+from datahandling.ShoppingTrip import ShoppingTrip, Purchase
 from algorithm.TextReader import TextReader, ContourFinder
 import time
 
@@ -52,6 +52,8 @@ class SosediReceiptReader:
         what_we_need = EnumNeeds.NAME
         last_purchase = []
 
+        list_of_purchases = []
+
         for img_line, i in zip(receipt.img_lines, range(len(receipt.img_lines))):
             center_rate = ReceiptReader.rate_center_area(img_line)
             if center_rate > cls.CENTER_RATE_THRESHOLD:
@@ -82,10 +84,12 @@ class SosediReceiptReader:
 
                             logging.info('created new purchase number {}'.format(i))
 
-                            extracted_data.list_of_purchases += [(raw_name, raw_price)]
+                            list_of_purchases += [(raw_name, raw_price)]
                         last_purchase.clear()
                     what_we_need = (what_we_need + 1) % 2
         extracted_data.list_of_purchases = TextReader.purchases_to_text(extracted_data.list_of_purchases, reader)
+
+        # this data is not saved
         return extracted_data
 
 

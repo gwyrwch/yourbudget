@@ -7,6 +7,3 @@ class AutoJSONEncoder(JSONEncoder):
             return obj._json()
         except AttributeError:
             return JSONEncoder.default(self, obj)
-
-
-
