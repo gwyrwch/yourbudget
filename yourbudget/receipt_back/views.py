@@ -44,6 +44,10 @@ def index(request):
     )
 
 
+def alltrips(request):
+    return render(request, 'alltrips.html')
+
+
 def not_found(request, exception):
     return render(request, '404.html')
 

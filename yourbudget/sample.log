@@ -122,3 +122,77 @@ INFO:django.utils.autoreload:Watching for file changes with StatReloader
 INFO:django.utils.autoreload:Watching for file changes with StatReloader
 WARNING:django.request:Unauthorized: /receipt_back/registration
 WARNING:django.request:Unauthorized: /receipt_back/registration
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/urls.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /arrays.txt
+WARNING:django.request:Not Found: /receipt_back/arrays.txt
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/urls.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingTrip.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /receipt_back/all_trips_data
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py", line 53, in get_all_trips_data
+    history = UserData.get_history(current_user.username)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/UserData.py", line 11, in get_history
+    sh = ShoppingHistory.objects(username=username)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/mongoengine/queryset/manager.py", line 37, in __get__
+    queryset = queryset_class(owner, owner._get_collection())
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/mongoengine/document.py", line 199, in _get_collection
+    db = cls._get_db()
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/mongoengine/document.py", line 188, in _get_db
+    return get_db(cls._meta.get('db_alias', DEFAULT_CONNECTION_NAME))
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/mongoengine/connection.py", line 239, in get_db
+    conn = get_connection(alias)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/mongoengine/connection.py", line 159, in get_connection
+    raise MongoEngineConnectionError(msg)
+mongoengine.connection.MongoEngineConnectionError: You have not defined a default connection
+ERROR:django.request:Internal Server Error: /receipt_back/all_trips_data
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py", line 58, in get_all_trips_data
+    for trip in history.all_trips
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py", line 58, in <listcomp>
+    for trip in history.all_trips
+AttributeError: 'ShoppingTrip' object has no attribute 'get_data_for_table'
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingTrip.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /receipt_back/all_trips_data
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py", line 53, in get_all_trips_data
+    history = UserData.get_history(current_user.username)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/UserData.py", line 11, in get_history
+    sh = ShoppingHistory.objects(username=username)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/mongoengine/queryset/manager.py", line 37, in __get__
+    queryset = queryset_class(owner, owner._get_collection())
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/mongoengine/document.py", line 199, in _get_collection
+    db = cls._get_db()
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/mongoengine/document.py", line 188, in _get_db
+    return get_db(cls._meta.get('db_alias', DEFAULT_CONNECTION_NAME))
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/mongoengine/connection.py", line 239, in get_db
+    conn = get_connection(alias)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/mongoengine/connection.py", line 159, in get_connection
+    raise MongoEngineConnectionError(msg)
+mongoengine.connection.MongoEngineConnectionError: You have not defined a default connection

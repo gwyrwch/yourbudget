@@ -27,6 +27,22 @@ class ShoppingTrip(mongoengine.EmbeddedDocument):
     #         'address':  self.address
     #     }
 
+    @staticmethod
+    def date_to_string(date):
+        if date is None:
+            return ''
+        return '{}/{}/{}'.format(date.day, date.month, date.year)
+
+    def get_data_for_table(self):
+        return [
+            self.name_of_shop,
+            self.date_to_string(self.trip_date),
+            str(self.receipt_amount),
+            str(self.receipt_discount),
+            self.address,
+            self.category
+        ]
+
     def __str__(self):
         d = {
             u'Название': self.name_of_shop,

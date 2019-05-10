@@ -44,6 +44,27 @@ def get_current_data(request):
         return HttpResponseBadRequest()
 
 
+def get_all_trips_data(request):
+    from mongoengine import connect
+    connect('myNewDatabase')
+
+    current_user = request.user
+
+    if not current_user.is_authenticated:
+        return HttpResponseBadRequest()
+
+    history = UserData.get_history(current_user.username)
+
+    resp = JsonResponse({
+        'data': [
+            trip.get_data_for_table()
+            for trip in history.all_trips
+        ]
+    })
+
+    return resp
+
+
 class Telegram:
     @staticmethod
     @csrf_exempt
