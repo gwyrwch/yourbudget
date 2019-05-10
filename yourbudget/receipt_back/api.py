@@ -6,6 +6,8 @@ from receipt_back.models import User
 from PIL import Image
 import io, random, string
 
+from receipt_back.tasks import save_trip
+
 
 def get_current_data(request):
     """
@@ -71,4 +73,9 @@ class Telegram:
         img_path = user.username + '-' + filename
         image.save(img_path)
 
-        return HttpResponse()
+        try:
+            save_trip.delay(user.username, img_path)
+        except:
+            return HttpResponse(b'Service temporary unavaiable', status=500)
+
+        return HttpResponse(status=200)

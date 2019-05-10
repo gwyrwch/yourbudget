@@ -4,3 +4,7 @@
 3. класс коллекции походов в магазин
 
 textcleaner: http://www.fmwconcepts.com/imagemagick/textcleaner/index.php
+
+
+redis-server
+celery worker -A yourbudget --loglevel=debug --concurrency=4

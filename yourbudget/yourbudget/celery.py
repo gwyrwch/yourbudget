@@ -1,7 +1,7 @@
 import os
 from celery import Celery
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'receipt_back.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'yourbudget.settings')
 
 app = Celery('receipt_back')
 app.config_from_object('django.conf:settings')

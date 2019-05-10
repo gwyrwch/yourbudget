@@ -64,7 +64,8 @@ class ShoppingHistory(mongoengine.Document):
         return year, month
 
     def get_data_for_overview(self):
-        trips = sorted(self.all_trips, key=lambda x: self.get_date(x.trip_date))
+        trips = filter(lambda x: x.trip_date, self.all_trips)
+        trips = sorted(trips, key=lambda x: self.get_date(x.trip_date))
 
         if len(trips) == 0:
             today = datetime.today()
