@@ -249,6 +249,7 @@
                     <table id="table1" class="display table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th>Name of shop</th>
                                 <th>Date</th>
                                 <th>Total amount</th>
@@ -314,19 +315,6 @@
     <script src="{% static "assets/plugins/datatables/dataTables.responsive.min.js" %}"></script>
     <script src="{% static "assets/plugins/datatables/responsive.bootstrap4.min.js" %}"></script>
 
-    <!--<script src="{% static "assets/js/datatables.init.js" %}"></script>-->
-
-
-
-    <script>
-        $(document).ready(function() {
-            $('#table1').DataTable(
-            {
-                    "ajax": 'all_trips_data'
-            }
-            );
-        } );
-    </script>
-
+    <script src="{% static "assets/js/datatables.init.js" %}"></script>
   </body>
 </html>

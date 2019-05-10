@@ -16,16 +16,22 @@ class ShoppingTrip(mongoengine.EmbeddedDocument):
     category = mongoengine.StringField(default='')
     list_of_purchases = mongoengine.EmbeddedDocumentListField(Purchase, default=[])
 
-    # def _json(self):
-    #     return {
-    #         'name_of_shop': self.name_of_shop,
-    #         'trip_date': self.trip_date,
-    #         'receipt_amount': self.receipt_amount,
-    #         'receipt_discount': self.receipt_discount,
-    #         'list_of_purchases': self.list_of_purchases,
-    #         'category': self.category,
-    #         'address':  self.address
-    #     }
+    def _json(self):
+        return {
+            'name_of_shop': self.name_of_shop,
+            'trip_date': self.date_to_string(self.trip_date),
+            'receipt_amount': str(self.receipt_amount),
+            'receipt_discount': str(self.receipt_discount),
+            'list_of_purchases': [
+                {
+                    'price': p.price,
+                    'name_of_product': p.name_of_product
+                }
+                for p in self.list_of_purchases
+            ],
+            'category': self.category,
+            'address':  self.address
+        }
 
     @staticmethod
     def date_to_string(date):
@@ -34,14 +40,7 @@ class ShoppingTrip(mongoengine.EmbeddedDocument):
         return '{}/{}/{}'.format(date.day, date.month, date.year)
 
     def get_data_for_table(self):
-        return [
-            self.name_of_shop,
-            self.date_to_string(self.trip_date),
-            str(self.receipt_amount),
-            str(self.receipt_discount),
-            self.address,
-            self.category
-        ]
+        return self._json()
 
     def __str__(self):
         d = {

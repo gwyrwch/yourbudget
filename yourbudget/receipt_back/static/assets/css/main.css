@@ -395,7 +395,7 @@ hr {
   height: 100%;
   border-radius: 100%;
   border: 7px solid transparent;
-  border-top-color: #f78fb3;
+  border-top-color: #f5cd79;
 }
 
 #loader-1:before {
@@ -2848,3 +2848,15 @@ button:focus {
     position: relative;
   }
 
+
+td.details-control {
+    background: #000000 no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: #03A9F4 no-repeat center center;
+}
+
+.custom {
+    width: 500px !important;
+}
