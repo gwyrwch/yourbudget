@@ -28,7 +28,7 @@
 
 2. Страница авторизации. 
 
-![](screenshots/screen3.png)
+![](screenshots/screen4.png)
 
 
 #### Для получения информации о покупках имеется telegram bot:
