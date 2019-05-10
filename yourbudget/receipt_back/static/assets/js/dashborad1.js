@@ -1,10 +1,3 @@
-/*
- Template Name: Inspire - Bootstrap 4 Admin Dashboard
- Author: UIdeck
- Website: www.uideck.com
-File: dashborad1 js
- */
-
 !function ($) {
     "use strict";
 
@@ -73,15 +66,6 @@ File: dashborad1 js
             create_chart_2(function($data){
                 th.createDonutChart('morris-donut-example', $data, ['#f78fb3', "#f5cd79", '#74b9ff', '#9fcd91']);
             });
-
-            //creating donut chart for dashboard-1
-//            var $donutData = [
-//                {label: "Grocery", value: 62},
-//                {label: "Clothes", value: 29},
-//                {label: "Food", value: 5},
-//                {label: "Electronics", value: 4},
-//            ];
-
         },
         //init
         $.Dashboard = new Dashboard, $.Dashboard.Constructor = Dashboard

@@ -32,18 +32,14 @@
                 <div class="col-12 col-lg-3 col-md-6">
                   <h4 class="page-title">yourbudget</h4>
                 </div>
-                <div class="col-12 col-lg-9 col-md-6">
-                  <ol class="breadcrumb float-right">
-                    <li><a href="registration">Go to registration</a></li>
 
-                  </ol>
-                </div>
               </div>
               <!-- Breadcrumb End -->
             </div>
 
-            <div class="container-fluid">
-              <div class="row">
+
+            <div class="wrapper-page">
+              <div class="row justify-content-center">
 
                 <div class="col-lg-6 col-md-12 col-xs-12">
                   <div class="card">
@@ -57,25 +53,44 @@
                       <form method="post" class="forms-sample">
                         {% csrf_token %}
 
-                        <div class="form-group row">
-                          <label for="usernameOrEmail" class="col-sm-3 col-lg-4 col-form-label">Username or email</label>
-                          <div class="col-sm-9 col-lg-8">
-                            <input type="text" class="form-control" id="usernameOrEmail" name="usernameOrEmail" placeholder="Username or email">
-                          </div>
+                        <div class="form-group">
+                          <!--<div class="col-sm-9 col-lg-8">-->
+                            <input type="text" class="form-control" name="usernameOrEmail" placeholder="Username or email">
+                          <!--</div>-->
                         </div>
 
-                        <div class="form-group row">
-                          <label for="password" class="col-sm-3 col-lg-4 col-form-label">Password</label>
-                          <div class="col-sm-9 col-lg-8">
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                          </div>
+                        <div class="form-group">
+                          <!--<div class="col-sm-9 col-lg-8">-->
+                            <input type="password" class="form-control" name="password" placeholder="Password">
+                          <!--</div>-->
                         </div>
                         <div class="custom-control custom-checkbox m-b-20">
                           <input type="checkbox" class="custom-control-input" id="checkbox1" name="rememberMe" value="check">
                           <label class="custom-control-label" for="checkbox1">Remember me</label>
                         </div>
-                        <button type="submit" class="btn btn-common mr-3">Login</button>
+
+                        <div class="form-group text-center m-t-20">
+                          <button type="submit" class="btn btn-common btn-block">Login</button>
+                        </div>
                         <!--<button class="btn btn-light">Cancel</button>-->
+
+                        <div class="form-group">
+                          <div class="float-left">
+                            <a href="registration" class="text-muted">
+                              <i class="lni-user">
+                              </i>
+                              Create an account
+                            </a>
+                          </div>
+
+                          <div class="float-right">
+                            <a href="registration" class="text-muted">
+                              <i class="lni-lock">
+                              </i>
+                              Forgot your password?
+                            </a>
+                          </div>
+                        </div>
                       </form>
                     </div>
                   </div>
@@ -86,18 +101,18 @@
           </div>
           <!-- Content Wrapper END -->
 
-          <!-- Footer START -->
-          <footer class="content-footer">
-            <div class="footer">
-              <div class="copyright">
-                <span>Copyright © 2019 <b class="text-dark">yourbudget inc</b>. All Right Reserved</span>
-                <span class="go-right">
-                  <a href="" class="text-gray">Term &amp; Conditions</a>
-                  <a href="" class="text-gray">Privacy &amp; Policy</a>
-                </span>
-              </div>
-            </div>
-          </footer>
+          <!--&lt;!&ndash; Footer START &ndash;&gt;-->
+          <!--<footer class="content-footer">-->
+            <!--<div class="footer">-->
+              <!--<div class="copyright">-->
+                <!--<span>Copyright © 2019 <b class="text-dark">yourbudget inc</b>. All Right Reserved</span>-->
+                <!--<span class="go-right">-->
+                  <!--<a href="" class="text-gray">Term &amp; Conditions</a>-->
+                  <!--<a href="" class="text-gray">Privacy &amp; Policy</a>-->
+                <!--</span>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</footer>-->
           <!-- Footer END -->
         </div>
     </div>

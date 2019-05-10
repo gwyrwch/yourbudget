@@ -119,3 +119,6 @@ INFO:django.utils.autoreload:Watching for file changes with StatReloader
 INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingHistory.py changed, reloading.
 INFO:django.utils.autoreload:Watching for file changes with StatReloader
 INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Unauthorized: /receipt_back/registration
+WARNING:django.request:Unauthorized: /receipt_back/registration
