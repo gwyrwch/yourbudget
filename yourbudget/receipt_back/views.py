@@ -10,6 +10,8 @@ from datahandling.UserData import UserData
 from receipt_back.models import User
 from services import get_percent
 
+import logging
+
 
 def index(request):
     from mongoengine import connect
@@ -117,19 +119,24 @@ class RegistrationView(View):
             )
 
             return HttpResponseRedirect(redirect_to='login')
-        except (ValueError, ):
+        except ValueError as e:
             # Value error in create_user(), or passwords dont match
+            logging.info(str(e))
 
             a = HttpResponse()
             a.status_code = 400
             return a
-        except IntegrityError:
+        except IntegrityError as e:
+            logging.info(str(e))
+
             # Duplicate
             a = HttpResponse()
             a.status_code = 402
             return a
-        except ValidationError:
+        except ValidationError as e:
             # Bad password
+            logging.info(str(e))
+
             a = HttpResponse()
             a.status_code = 401
             return a

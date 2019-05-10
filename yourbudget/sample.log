@@ -196,3 +196,48 @@ Traceback (most recent call last):
   File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/mongoengine/connection.py", line 159, in get_connection
     raise MongoEngineConnectionError(msg)
 mongoengine.connection.MongoEngineConnectionError: You have not defined a default connection
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Unauthorized: /receipt_back/registration
+WARNING:django.request:Bad Request: /receipt_back/registration
+WARNING:django.request:Unauthorized: /receipt_back/registration
+WARNING:django.request:Bad Request: /receipt_back/registration
+WARNING:django.request:Unauthorized: /receipt_back/registration
+WARNING:django.request:Unauthorized: /receipt_back/registration
+WARNING:django.request:Unauthorized: /receipt_back/registration
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:root:['This password is too short. It must contain at least 8 characters.', 'This password is too common.', 'This password is entirely numeric.']
+WARNING:django.request:Unauthorized: /receipt_back/registration
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Bad Request: /receipt_back/login
+ERROR:django.request:Internal Server Error: /receipt_back/all_trips_data
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py", line 61, in get_all_trips_data
+    for trip in history.all_trips
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py", line 61, in <listcomp>
+    for trip in history.all_trips
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingTrip.py", line 37, in get_data_for_table
+    return self._json()
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingTrip.py", line 25, in _json
+    'list_of_purchases': self.list_of_purchases.to_json(),
+AttributeError: 'EmbeddedDocumentList' object has no attribute 'to_json'
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingTrip.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingTrip.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingTrip.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
