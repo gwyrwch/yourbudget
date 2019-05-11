@@ -365,13 +365,13 @@
                       <div class="card">
                         <div class="card-body">
                           <div class="sales-info">
-                            <h3>14.00</h3>
-                            <span>Spend on cigarettes</span>
+                            <h3>{{ progress_bar_data.spent_on_fav_product }}</h3>
+                            <span>Spent on {{progress_bar_data.fav_product}}</span>
                           </div>
                           <div class="progress progress-sm">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="35" style="width: 75%"></div>
+                            <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="35" style="{{ progress_bar_data.fav_product_percent }}"></div>
                           </div>
-                          <p>42% higher than last month</p>
+                          <p>{{progress_bar_data.fav_product_annotation}}</p>
                         </div>
                       </div>
                     </div>
@@ -379,13 +379,13 @@
                       <div class="card">
                         <div class="card-body">
                           <div class="sales-info">
-                            <h3>34.23</h3>
+                            <h3>{{progress_bar_data.average_receipt}}</h3>
                             <span>Average receipt</span>
                           </div>
                           <div class="progress progress-sm">
-                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="35" style="width: 55%"></div>
+                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="35" style="{{ progress_bar_data.average_receipt_percent }}"></div>
                           </div>
-                          <p>19% less than last month</p>
+                          <p>{{progress_bar_data.average_receipt_annotation}}</p>
                         </div>
                       </div>
                     </div>
@@ -393,13 +393,13 @@
                       <div class="card">
                         <div class="card-body">
                           <div class="sales-info">
-                            <h3>10</h3>
+                            <h3>{{progress_bar_data.number_of_trips}}</h3>
                             <span>Number of trips</span>
                           </div>
                           <div class="progress progress-sm">
-                            <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="35" style="width: 35%"></div>
+                            <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="35" style="{{progress_bar_data.number_of_trips_percent}}"></div>
                           </div>
-                          <p>20% higher than last month</p>
+                          <p> {{ progress_bar_data.number_of_trips_annotation }} </p>
                         </div>
                       </div>
                     </div>

@@ -272,3 +272,220 @@ INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbud
 INFO:django.utils.autoreload:Watching for file changes with StatReloader
 INFO:django.utils.autoreload:Watching for file changes with StatReloader
 WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /receipt_back/index
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py", line 40, in index
+    *move_date_back(date.today(), cnt_month=1)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/services/__init__.py", line 30, in move_date_back
+    year, month = date
+TypeError: cannot unpack non-iterable datetime.date object
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /receipt_back/index
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py", line 38, in index
+    last_month = move_date_back(date.today(), cnt_month=1)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/services/__init__.py", line 30, in move_date_back
+    year, month = date
+TypeError: cannot unpack non-iterable datetime.date object
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /receipt_back/index
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py", line 38, in index
+    last_month = move_date_back(date.today(), cnt_month=1)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/services/__init__.py", line 30, in move_date_back
+    year, month = date
+TypeError: cannot unpack non-iterable datetime.date object
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /receipt_back/index
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py", line 38, in index
+    last_month = move_date_back(date.today(), cnt_month=1)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/services/__init__.py", line 30, in move_date_back
+    year, month = date
+TypeError: cannot unpack non-iterable datetime.date object
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /receipt_back/index
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py", line 38, in index
+    last_month = move_date_back(date.today(), cnt_month=1)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/services/__init__.py", line 30, in move_date_back
+    year, month = date
+TypeError: cannot unpack non-iterable datetime.date object
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /receipt_back/index
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py", line 38, in index
+    last_month = move_date_back(date.today(), cnt_month=1)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/services/__init__.py", line 30, in move_date_back
+    year, month = date
+TypeError: cannot unpack non-iterable datetime.date object
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /receipt_back/index
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py", line 38, in index
+    last_month = move_date_back(date.today(), cnt_month=1)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/services/__init__.py", line 30, in move_date_back
+    year, month = date
+TypeError: cannot unpack non-iterable datetime.date object
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /receipt_back/index
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py", line 38, in index
+    last_month = move_date_back(date.today(), cnt_month=1)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/services/__init__.py", line 30, in move_date_back
+    year, month = date
+TypeError: cannot unpack non-iterable datetime.date object
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /receipt_back/index
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py", line 38, in index
+    last_month = move_date_back(date.today(), cnt_month=1)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/services/__init__.py", line 30, in move_date_back
+    year, month = date
+TypeError: cannot unpack non-iterable datetime.date object
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /receipt_back/index
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py", line 38, in index
+    last_month = move_date_back(date.today(), cnt_month=1)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/services/__init__.py", line 30, in move_date_back
+    year, month = date
+TypeError: cannot unpack non-iterable datetime.date object
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/services/__init__.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /receipt_back/index
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py", line 35, in index
+    *get_date(date.today())
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingHistory.py", line 129, in get_amount_spent_on_fav_product
+    for trip in filter(lambda tr: tr.trip_date.year == year and tr.trip_date.month == month, self.all_trips)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingHistory.py", line 125, in <genexpr>
+    sum([
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingHistory.py", line 129, in <lambda>
+    for trip in filter(lambda tr: tr.trip_date.year == year and tr.trip_date.month == month, self.all_trips)
+AttributeError: 'NoneType' object has no attribute 'year'
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingHistory.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/services/__init__.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingHistory.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/services/__init__.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingHistory.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingHistory.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingHistory.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingHistory.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader

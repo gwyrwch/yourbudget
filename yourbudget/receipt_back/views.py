@@ -8,7 +8,9 @@ from django.views import View
 
 from datahandling.UserData import UserData
 from receipt_back.models import User
-from services import get_percent
+from services import get_percent, get_relative_percent, move_date_back, get_date
+
+from datetime import date
 
 import logging
 
@@ -27,6 +29,45 @@ def index(request):
     total_spend_amount = sum(trip.receipt_amount for trip in history.all_trips)
     total_discount = sum(trip.receipt_discount for trip in history.all_trips)
     all_purchases = sum(len(trip.list_of_purchases) for trip in history.all_trips)
+    
+    today = get_date(date.today())
+    
+    # fixme:gitt  delete
+    today = move_date_back(today, cnt_month=1)
+    
+    month_ago = move_date_back(today, cnt_month=1)
+
+    spent_on_fav_product_this_month = history.get_amount_spent_on_fav_product(
+        current_user.fav_product,
+        *today
+    )
+    spent_on_fav_product_last_month = history.get_amount_spent_on_fav_product(
+        current_user.fav_product,
+        *month_ago
+    )
+    fav_product_percent, fav_product_annotation = get_relative_percent(
+        spent_on_fav_product_this_month, spent_on_fav_product_last_month
+    )
+
+    average_receipt_this_month = history.get_average_receipt(
+        *today
+    )
+    average_receipt_last_month = history.get_average_receipt(
+        *month_ago
+    )
+    average_receipt_percent, average_receipt_annotation = get_relative_percent(
+        average_receipt_this_month, average_receipt_last_month
+    )
+
+    trips_this_month = history.get_number_of_trips(
+        *today
+    )
+    trips_last_month = history.get_number_of_trips(
+        *month_ago
+    )
+    trips_percent, trips_anotation = get_relative_percent(
+        trips_this_month, trips_last_month
+    )
 
     return render(
         request, 'index.html', context={
@@ -35,12 +76,28 @@ def index(request):
             'progress_bar_data': {
                 'registered_shopping_trips': registered_shopping_trips,
                 'registered_shopping_trips_percent': get_percent(registered_shopping_trips),
+
                 'total_spend_amount': total_spend_amount,
                 'total_spend_amount_percent': get_percent(total_spend_amount),
+
                 'total_discount': total_discount,
                 'total_discount_percent': get_percent(total_discount),
+
                 'all_purchases': all_purchases,
-                'all_purchases_percent': get_percent(all_purchases)
+                'all_purchases_percent': get_percent(all_purchases),
+
+                'fav_product': current_user.fav_product,
+                'spent_on_fav_product': spent_on_fav_product_this_month,
+                'fav_product_percent': fav_product_percent,
+                'fav_product_annotation': fav_product_annotation,
+
+                'average_receipt': average_receipt_this_month,
+                'average_receipt_annotation': average_receipt_annotation,
+                'average_receipt_percent': average_receipt_percent,
+
+                'number_of_trips': trips_this_month,
+                'number_of_trips_annotation': trips_anotation,
+                'number_of_trips_percent': trips_percent
             }
         }
     )
@@ -97,8 +154,6 @@ class RegistrationView(View):
         country = result.get('country')
         telegram_username = result.get('telegram_username')
 
-        return HttpResponse()
-
         password1 = result.get('password1')
         password2 = result.get('password2')
 
@@ -121,8 +176,6 @@ class RegistrationView(View):
                 city=city,
                 telegram_username=telegram_username
             )
-
-
 
             return HttpResponseRedirect(redirect_to='login')
         except ValueError as e:

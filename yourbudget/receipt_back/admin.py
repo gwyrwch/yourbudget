@@ -23,13 +23,13 @@ class MyUserAdmin(UserAdmin):
     add_form = MyUserCreationForm
 
     fieldsets = UserAdmin.fieldsets + (
-        ('Extra fields', {'fields': ('date_of_birth', 'gender', 'city', 'country', 'telegram_username')}),
+        ('Extra fields', {'fields': ('date_of_birth', 'gender', 'city', 'country', 'telegram_username', 'fav_product')}),
     )
 
     add_fieldsets = UserAdmin.add_fieldsets + (
         ('Extra fields', {
             'classes': ('wide',),
-            'fields': ('date_of_birth', 'gender', 'city', 'country', 'email', 'telegram_username')
+            'fields': ('date_of_birth', 'gender', 'city', 'country', 'email', 'telegram_username', 'fav_product')
         }),
     )
 

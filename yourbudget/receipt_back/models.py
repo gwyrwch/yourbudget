@@ -11,5 +11,6 @@ class User(AbstractUser):
     city = models.CharField(max_length=30)
     country = models.CharField(max_length=30)
     telegram_username = models.CharField(max_length=30, null=True)
+    fav_product = models.CharField(max_length=30, default="ice-cream")
 
     REQUIRED_FIELDS = ['email', 'date_of_birth', 'gender', 'city', 'country']

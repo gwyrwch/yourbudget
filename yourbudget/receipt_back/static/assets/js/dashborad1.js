@@ -34,19 +34,6 @@
 
             var create_chart_1 = function(callback) {
                 $.get('current_data?chart=overview', function(data) {
-//              fixme: don't know why this works
-//                    var $barData = [];
-//
-//                    var len = data.length;
-//                    for (var i = 0; i < len; i++) {
-//                        $barData.push({
-//                            y: data[i]['y'],
-//                            a: data[i]['a'],
-//                            b: data[i]['b'],
-//                            c: data[i]['c']
-//                        });
-//                    }
-
                     if (callback)
                         callback(data['overview'], data['top3']);
                 }, "json");
