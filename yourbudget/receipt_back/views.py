@@ -85,15 +85,19 @@ class RegistrationView(View):
 
     def post(self, request):
         result = request.POST
+        print(result)
         first_name = result.get('first-name')
         last_name = result.get('last-name')
         gender = result.get('gender')
+        print(gender)
         date_of_birth = result.get('date-of-birth')
         username = result.get('username')
         email = result.get('email')
         city = result.get('city')
         country = result.get('country')
         telegram_username = result.get('telegram_username')
+
+        return HttpResponse()
 
         password1 = result.get('password1')
         password2 = result.get('password2')
@@ -117,6 +121,8 @@ class RegistrationView(View):
                 city=city,
                 telegram_username=telegram_username
             )
+
+
 
             return HttpResponseRedirect(redirect_to='login')
         except ValueError as e:
