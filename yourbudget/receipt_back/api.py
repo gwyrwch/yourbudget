@@ -32,14 +32,7 @@ def get_current_data(request):
     elif chart == 'categorization':
         categorization = history.get_data_for_categorization()
         # TODO
-        return JsonResponse(
-            # categorization
-            [
-            {"label": "Grocery", "value": 62},
-            {"label": "Clothes", "value": 29},
-            {"label": "Food", "value": 5},
-            {"label": "Electronics", "value": 4},
-        ], safe=False)
+        return JsonResponse(categorization, safe=False)
     else:
         return HttpResponseBadRequest()
 

@@ -489,3 +489,299 @@ INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbud
 INFO:django.utils.autoreload:Watching for file changes with StatReloader
 INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingHistory.py changed, reloading.
 INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/urls.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /receipt_back/index.html
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+WARNING:django.request:Bad Request: /receipt_back/current_data
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /receipt_back/settings
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py", line 221, in post
+    print(request.post)
+AttributeError: 'WSGIRequest' object has no attribute 'post'
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Bad Request: /receipt_back/settings
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Bad Request: /receipt_back/settings
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Bad Request: /receipt_back/settings
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Bad Request: /receipt_back/settings
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Bad Request: /receipt_back/settings
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Bad Request: /receipt_back/settings
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Bad Request: /receipt_back/login
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Bad Request: /receipt_back/login
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingHistory.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingHistory.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingHistory.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader

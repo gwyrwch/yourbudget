@@ -51,7 +51,8 @@
             };
 
             create_chart_2(function($data){
-                th.createDonutChart('morris-donut-example', $data, ['#f78fb3', "#f5cd79", '#74b9ff', '#9fcd91']);
+                var all_colors = ['#f78fb3', "#f5cd79", '#74b9ff', '#9fcd91'];
+                th.createDonutChart('morris-donut-example', $data, all_colors);
             });
         },
         //init

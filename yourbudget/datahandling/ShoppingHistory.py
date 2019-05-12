@@ -118,7 +118,13 @@ class ShoppingHistory(mongoengine.Document):
         return ans, top_three
 
     def get_data_for_categorization(self):
-        pass
+        return [
+            # categorization
+            {"label": "Grocery", "value": 62},
+            {"label": "Clothes", "value": 29},
+            {"label": "Food", "value": 5},
+            {"label": "Electronics", "value": 4},
+        ]
 
     def get_trips_this_month(self, year, month):
         trips = filter(lambda x: x.trip_date, self.all_trips)

@@ -204,12 +204,11 @@
                     <i class="lni-chevron-right"></i>
                   </span>
                 </a>
-
                 <ul class="dropdown-menu sub-down">
-                  <li>
+                  <li class="active">
                     <a href="index">Dashboard</a>
                   </li>
-                  <li class="active">
+                  <li>
                     <a href="alltrips">All trips</a>
                   </li>
                 </ul>
@@ -224,65 +223,124 @@
         <div class="page-container">
           <!-- Content Wrapper START -->
           <div class="main-content">
-            <div class="container-fluid">
-              <!-- Breadcrumb Start -->
-              <div class="breadcrumb-wrapper row">
-                <div class="col-12 col-lg-3 col-md-6">
-                      <h4 class="page-title">Shopping history info</h4>
+            <div class="row justify-content-center">
+            <div class="col-lg-12 col-xl-6">
+              <div class="card">
+                <div class="card-header border-bottom">
+                  <h4 class="card-title">General</h4>
                 </div>
-                <div class="col-12 col-lg-9 col-md-6">
-                  <ol class="breadcrumb float-right">
-                    <li><a href="index">Home</a></li>
-                    <li class="active">/ All trips</li>
-                  </ol>
+                <div class="card-body">
+                  <form class="form" method="post">
+                    {% csrf_token %}
+                    <input type="text" value="general" name="settings" hidden>
+                    <div class="form-row">
+                    <div class="form-check col-md-12 m-b-20">
+                      <div class="custom-control custom-radio radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" name="gender" id="male" value="male" {{male_checked}}>
+                        <label class="custom-control-label" for="male">Male</label>
+                      </div>
+                        <div class="custom-control custom-radio radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" name="gender" id="female" value="female" {{female_checked}}>
+                          <label class="custom-control-label" for="female">Female</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                      <p class="card-description">
+                        Firstname
+                      </p>
+                      <input type="text" class="form-control" name="firstname" id="firstname" placeholder="{{firstname}}">
+                    </div>
+                    <div class="form-group col-lg-6">
+                      <p class="card-description">
+                        Lastname
+                      </p>
+                      <input type="text" class="form-control" name="lastname" id="lastname" placeholder="{{lastname}}">
+                    </div>
+                    <div class="form-group col-lg-12">
+                      <p class="card-description">
+                        Email
+                      </p>
+                      <input type="email" class="form-control" name="email" id="email" placeholder="{{email}}">
+                    </div>
+                    <div class="form-group col-lg-12">
+                      <p class="card-description">
+                        Telegram username
+                      </p>
+                      <input type="text" class="form-control" name="telegram_username" id="telegram_username" placeholder="{{telegram_username}}">
+                    </div>
+
+                    <div class="form-group col-lg-12 text-center">
+                      <button type="submit" class="btn btn-common col-4 d-block mx-auto">Save</button>
+                    </div>
+                    </div>
+                  </form>
                 </div>
               </div>
-              <!-- Breadcrumb End -->
+
+              <div class="card">
+                <div class="card-header border-bottom">
+                  <h4 class="card-title">Change password</h4>
+                </div>
+                <div class="card-body">
+                  <form class="form" method="post">
+                    {% csrf_token %}
+                    <input type="text" value="password" name="settings" hidden>
+                    <div class="form-row">
+                      <div class="form-group col-lg-12">
+
+                      <!--<label for="currentPassword" class="col">Current password</label>-->
+                      <!--<div class="">-->
+                        <input type="password" class="form-control" name="old_password" id="currentPassword" placeholder="Current password">
+                      <!--</div>-->
+                    </div>
+                    <div class="form-group col-lg-12">
+                      <!--<label for="password" class="col-sm-4 col-form-label">New password</label>-->
+                      <!--<div class="col-sm-8 row-sm-4">-->
+                        <input type="password" class="form-control" name="password1" id="password" placeholder="New password">
+                      <!--</div>-->
+                    </div>
+                    <div class="form-group col-lg-12">
+
+                      <!--<label for="confirmPassword" class="col-sm-4 col-form-label">Confirm new password</label>-->
+                      <!--<div class="col-sm-8 row-sm-4">-->
+                        <input type="password" class="form-control" name="password2" id="confirmPassword" placeholder="Confirm new password">
+                      <!--</div>-->
+                    </div>
+                    <div class="form-group col-lg-12 text-center">
+                      <button type="submit" class="btn btn-common col-4 d-block mx-auto">Save</button>
+                    </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header border-bottom">
+                  <h4 class="card-title">Preferences</h4>
+                </div>
+                <div class="card-body">
+                  <form class="form" method="post">
+                    {% csrf_token %}
+                    <input type="text" value="preferences" name="settings" hidden>
+                    <div class="form-row">
+                    <div class="form-group col-lg-12">
+                      <p class="card-description">
+                        Favorite product
+                      </p>
+                      <input type="text" class="form-control" name="fav_product" id="fav_product" placeholder="{{fav_product}}">
+                    </div>
+                    <div class="form-group col-lg-12 text-center">
+                      <button type="submit" class="btn btn-common col-4 d-block mx-auto">Save</button>
+                    </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
-
-            <div class="container-fluid">
-              <!-- Title Count Start -->
-              <div class="card-group">
-
-              <!-- Title Count End -->
-                <div class="table-responsive">
-                    <table id="table1" class="display table table-striped table-bordered" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Name of shop</th>
-                                <th>Date</th>
-                                <th>Total amount</th>
-                                <th>Total discount</th>
-                                <th>Address</th>
-                                <th>Category</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
-                </div>
-
-                </div>
             </div>
           <!-- Content Wrapper END -->
-
-          <!-- Footer START -->
-          <footer class="content-footer">
-            <div class="footer">
-              <div class="copyright">
-                <span>Copyright © 2019 <b class="text-dark">yourbudget inc</b>. All Right Reserved</span>
-                <span class="go-right">
-                  <a href="" class="text-gray">Term &amp; Conditions</a>
-                  <a href="" class="text-gray">Privacy &amp; Policy</a>
-                </span>
-              </div>
-            </div>
-          </footer>
-          <!-- Footer END -->
-
         </div>
+
         <!-- Page Container END -->
       </div>
     </div>
@@ -300,21 +358,6 @@
     <script src="{% static "assets/js/jquery.app.js" %}"></script>
     <script src="{% static "assets/js/main.js" %}"></script>
 
-    <script src="{% static "assets/plugins/datatables/jquery.dataTables.min.js" %}"></script>
-    <script src="{% static "assets/plugins/datatables/dataTables.bootstrap4.min.js" %}"></script>
 
-    <script src="{% static "assets/plugins/datatables/dataTables.buttons.min.js" %}"></script>
-    <script src="{% static "assets/plugins/datatables/buttons.bootstrap4.min.js" %}"></script>
-    <script src="{% static "assets/plugins/datatables/jszip.min.js" %}"></script>
-    <script src="{% static "assets/plugins/datatables/pdfmake.min.js" %}"></script>
-    <script src="{% static "assets/plugins/datatables/vfs_fonts.js" %}"></script>
-    <script src="{% static "assets/plugins/datatables/buttons.html5.min.js" %}"></script>
-    <script src="{% static "assets/plugins/datatables/buttons.print.min.js" %}"></script>
-    <script src="{% static "assets/plugins/datatables/buttons.colVis.min.js" %}"></script>
-
-    <script src="{% static "assets/plugins/datatables/dataTables.responsive.min.js" %}"></script>
-    <script src="{% static "assets/plugins/datatables/responsive.bootstrap4.min.js" %}"></script>
-
-    <script src="{% static "assets/js/datatables.init.js" %}"></script>
   </body>
 </html>

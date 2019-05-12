@@ -1,3 +1,4 @@
+from django.contrib.auth.hashers import make_password
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError
@@ -65,7 +66,7 @@ def index(request):
     trips_last_month = history.get_number_of_trips(
         *month_ago
     )
-    trips_percent, trips_anotation = get_relative_percent(
+    trips_percent, trips_annotation = get_relative_percent(
         trips_this_month, trips_last_month
     )
 
@@ -96,7 +97,7 @@ def index(request):
                 'average_receipt_percent': average_receipt_percent,
 
                 'number_of_trips': trips_this_month,
-                'number_of_trips_annotation': trips_anotation,
+                'number_of_trips_annotation': trips_annotation,
                 'number_of_trips_percent': trips_percent
             }
         }
@@ -104,7 +105,13 @@ def index(request):
 
 
 def alltrips(request):
-    return render(request, 'alltrips.html')
+    current_user = request.user
+    if current_user is None or not current_user.is_authenticated:
+        return HttpResponseRedirect(redirect_to='login')
+
+    return render(request, 'alltrips.html', context={
+        'full_name': current_user.get_full_name(),
+    })
 
 
 def not_found(request, exception):
@@ -199,3 +206,76 @@ class RegistrationView(View):
             a = HttpResponse()
             a.status_code = 401
             return a
+
+
+class SettingsView(View):
+    def get(self, request):
+        current_user = request.user
+        if not current_user.is_authenticated:
+            return HttpResponseRedirect(redirect_to='login')
+
+        return render(request, 'settings.html', context={
+            'full_name': current_user.get_full_name(),
+            'email': current_user.email,
+            'firstname': current_user.first_name,
+            'lastname': current_user.last_name,
+            'telegram_username': current_user.telegram_username,
+            'fav_product': current_user.fav_product,
+            'male_checked': 'checked' if current_user.gender == 'male' else '',
+            'female_checked': 'checked' if current_user.gender == 'female' else '',
+
+        })
+
+    def post(self, request):
+        current_user = request.user
+
+        if not current_user.is_authenticated:
+            return HttpResponseRedirect(redirect_to='login')
+
+        result = request.POST
+        settings = result.get('settings')
+
+        if settings == 'general':
+            gender = result.get('gender')
+            if gender:
+                current_user.gender = gender
+            first_name = result.get('firstname')
+            if first_name:
+                current_user.first_name = first_name
+            last_name = result.get('lastname')
+            if last_name:
+                current_user.last_name = last_name
+            email = result.get('email')
+            if email:
+                current_user.email = email
+            telegram_username = result.get('telegram_username')
+            if telegram_username:
+                current_user.telegram_username = telegram_username
+
+            current_user.save()
+
+            return HttpResponseRedirect('settings')
+        elif settings == 'preferences':
+            fav_product = result.get('fav_product')
+            if fav_product:
+                current_user.fav_product = fav_product
+            current_user.save()
+            return HttpResponseRedirect('settings')
+        elif settings == 'password':
+            old_password = result.get('old_password')
+            password1 = result.get('password1')
+            password2 = result.get('password2')
+
+            temp_user = authenticate(username=current_user.username, password=old_password)
+
+            if old_password and password1 and password2:
+                if temp_user is None or password1 != password2:
+                    return HttpResponseBadRequest()
+                current_user.set_password(password1)
+                current_user.save()
+
+                login(request, current_user)
+
+            return HttpResponseRedirect('settings')
+        else:
+            return HttpResponseBadRequest()
