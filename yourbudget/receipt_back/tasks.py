@@ -21,7 +21,7 @@ def save_trip(username, img_path):
     from mongoengine import connect
     connect('myNewDatabase')
 
-    history = UserData.get_history( username)
+    history = UserData.get_history(username)
     history.all_trips.append(shopping_trip)
     history.save()
 

@@ -1,6 +1,9 @@
+import json
+
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
 
+from datahandling.ShoppingTrip import ShoppingTrip
 from datahandling.UserData import UserData
 from receipt_back.models import User
 from PIL import Image
@@ -91,5 +94,33 @@ class Telegram:
             save_trip.delay(user.username, img_path)
         except:
             return HttpResponse(b'Service temporary unavaiable', status=500)
+
+        return HttpResponse(status=200)
+
+    @staticmethod
+    @csrf_exempt
+    def save_trip_manual(request):
+        from mongoengine import connect
+        connect('myNewDatabase')
+
+        if request.method != 'POST':
+            return HttpResponseBadRequest(b'Wrong method')
+
+        raw_body = request.body
+        result = json.loads(raw_body)
+
+        telegram_username = result['telegram_username']
+        raw_shopping_trip = result['trip']
+
+        try:
+            user = User.objects.get(telegram_username=telegram_username)
+        except User.DoesNotExist:
+            return HttpResponse(b'User with such telegram username wasnt found.', status=401)
+
+        shopping_trip = ShoppingTrip._from_son(raw_shopping_trip)
+
+        history = UserData.get_history(user.username)
+        history.all_trips.append(shopping_trip)
+        history.save()
 
         return HttpResponse(status=200)

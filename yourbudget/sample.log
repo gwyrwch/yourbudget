@@ -785,3 +785,234 @@ INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbud
 INFO:django.utils.autoreload:Watching for file changes with StatReloader
 INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/ShoppingHistory.py changed, reloading.
 INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /receipt_back/save_trip
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /receipt_back/save_trip_manual
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/utils/datastructures.py", line 78, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'telegram_username'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py", line 104, in save_trip_manual
+    telegram_username = request.POST['telegram_username']
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/utils/datastructures.py", line 80, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'telegram_username'
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /receipt_back/save_trip_manual
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/utils/datastructures.py", line 78, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'trip'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py", line 106, in save_trip_manual
+    print(request.POST['trip'])
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/utils/datastructures.py", line 80, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'trip'
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /receipt_back/save_trip_manual
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/utils/datastructures.py", line 78, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'trip'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py", line 106, in save_trip_manual
+    print(request.POST['trip'])
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/utils/datastructures.py", line 80, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'trip'
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /receipt_back/save_trip_manual
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py", line 106, in save_trip_manual
+    print(request.body)
+AttributeError: module 'django.http.request' has no attribute 'body'
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /receipt_back/save_trip_manual
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py", line 107, in save_trip_manual
+    result = json.loads(raw_body)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /receipt_back/save_trip_manual
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py", line 110, in save_trip_manual
+    telegram_username = result['telegram_username']
+TypeError: string indices must be integers
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /receipt_back/save_trip_manual
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py", line 107, in save_trip_manual
+    result = json.loads(raw_body)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /receipt_back/save_trip_manual
+Traceback (most recent call last):
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py", line 119, in save_trip_manual
+    history = UserData.get_history(user.username)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/datahandling/UserData.py", line 11, in get_history
+    sh = ShoppingHistory.objects(username=username)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/mongoengine/queryset/manager.py", line 37, in __get__
+    queryset = queryset_class(owner, owner._get_collection())
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/mongoengine/document.py", line 199, in _get_collection
+    db = cls._get_db()
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/mongoengine/document.py", line 188, in _get_db
+    return get_db(cls._meta.get('db_alias', DEFAULT_CONNECTION_NAME))
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/mongoengine/connection.py", line 239, in get_db
+    conn = get_connection(alias)
+  File "/Users/gwyrwch/PycharmProjects/coursebattle/venv/lib/python3.7/site-packages/mongoengine/connection.py", line 159, in get_connection
+    raise MongoEngineConnectionError(msg)
+mongoengine.connection.MongoEngineConnectionError: You have not defined a default connection
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/api.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:/Users/gwyrwch/PycharmProjects/coursebattle/yourbudget/receipt_back/views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader

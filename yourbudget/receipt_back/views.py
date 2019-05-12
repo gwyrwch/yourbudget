@@ -32,10 +32,7 @@ def index(request):
     all_purchases = sum(len(trip.list_of_purchases) for trip in history.all_trips)
     
     today = get_date(date.today())
-    
-    # fixme:gitt  delete
-    today = move_date_back(today, cnt_month=1)
-    
+
     month_ago = move_date_back(today, cnt_month=1)
 
     spent_on_fav_product_this_month = history.get_amount_spent_on_fav_product(
