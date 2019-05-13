@@ -2603,10 +2603,12 @@ button:focus {
 }
 
 .profile-bg .user-profile .profile-body .profile-user-avatar img {
-  border-radius: 100px;
-  border: 2px solid #fff;
-  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+  border-radius: 200px;
+  border: 0px solid #fff;
+  -webkit-box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.4);
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+  width: 50%;
+  height: auto;
 }
 
 .profile-bg .user-profile .profile-body .profile-user-name {
