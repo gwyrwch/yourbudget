@@ -42,132 +42,23 @@ def optimize_tesseract():
     TextReader.split_into_columns(img)
 
     exit(0)
+    
+def test_updated_algotihm():
+    from algorithm.TextReader import TextReader
+    from pytesseract import image_to_string as reader
+    from algorithm.readers import SosediReceiptReader
+    from PIL import Image
+    from algorithm.ReceiptReader import ReceiptReader
 
-def load_mongo():
-    import json
-    from services.AutoJsonDecoder import decoder_fabric
-    from datahandling.ShoppingTrip import ShoppingTrip, Purchase
-    from datahandling.ShoppingHistory import ShoppingHistory
+    ReceiptReader.convert_to_receipt(TESTS_PATH + 'test_sosedi.JPG')
 
-    sh = ShoppingHistory(
-        username="alex",
-        all_trips=[
-            ShoppingTrip(
-                name_of_shop="Корона",
-                trip_date=datetime.fromisoformat("2019-04-20"),
-                receipt_amount=102.87,
-                address="Пр. Победителей 11",
-                receipt_discount=8,
-                category="Grocery",
-                list_of_purchases=[
-                    Purchase(
-                        name_of_product="Foo",
-                        price=0.87
-                    ),
-                    Purchase(
-                        name_of_product="Bar",
-                        price=102
-                    )
-                ]
-            ),
-            ShoppingTrip(
-                name_of_shop="Пятый элемент",
-                trip_date=datetime.fromisoformat("2019-04-17"),
-                receipt_amount=500,
-                address="Пр. Победителей 22",
-                receipt_discount=0,
-                category="Electronics",
-                list_of_purchases=[
-                    Purchase(
-                        name_of_product="Foo",
-                        price=500
-                    ),
-                ]
-            ),
-            ShoppingTrip(
-                name_of_shop="Соседи",
-                trip_date=datetime.fromisoformat("2019-04-17"),
-                receipt_amount=128,
-                address="Пр. Победителей 49",
-                receipt_discount=0,
-                category="Grocery",
-                list_of_purchases=[
-                    Purchase(
-                        name_of_product="Foo",
-                        price=128
-                    ),
-                ]
-            ),
-            ShoppingTrip(
-                name_of_shop="Mcdonald's",
-                trip_date=datetime.fromisoformat("2019-02-17"),
-                receipt_amount=10,
-                address="Бобруйская 6",
-                receipt_discount=0,
-                category="Food",
-                list_of_purchases=[
-                    Purchase(
-                        name_of_product="Foo",
-                        price=10
-                    ),
-                ]
-            ),
-            ShoppingTrip(
-                name_of_shop="Bershka",
-                trip_date=datetime.fromisoformat("2019-02-17"),
-                receipt_amount=100,
-                address="Независимости 85",
-                receipt_discount=0,
-                category="Clothes",
-                list_of_purchases=[
-                    Purchase(
-                        name_of_product="Foo",
-                        price=100
-                    ),
-                ]
-            ),
-            ShoppingTrip(
-                name_of_shop="Корона",
-                trip_date=datetime.fromisoformat("2019-02-20"),
-                receipt_amount=77.01,
-                address="Пр. Победителей 11",
-                receipt_discount=8,
-                category="Grocery",
-                list_of_purchases=[
-                    Purchase(
-                        name_of_product="Foo",
-                        price=1
-                    ),
-                    Purchase(
-                        name_of_product="Bar",
-                        price=76.01
-                    )
-                ]
-            ),
-            ShoppingTrip(
-                name_of_shop="Пятый элемент",
-                trip_date=datetime.fromisoformat("2019-03-17"),
-                receipt_amount=200,
-                address="Пр. Победителей 22",
-                receipt_discount=0,
-                category="Electronics",
-                list_of_purchases=[
-                    Purchase(
-                        name_of_product="Foo",
-                        price=200
-                    ),
-                ]
-            ),
-        ]
-    )
+    # tt = TextReader.purchases_to_text([
+    #     (Image.open('yourbudget/result_lines/purchase_47_name.png'), Image.open('yourbudget/result_lines/purchase_47_price.png'))
+    # ], reader, SosediReceiptReader)
+    # print(tt[0].name_of_product)
 
-    connect('myNewDatabase')
 
-    # sh.save()
 
 if __name__ == '__main__':
-    load_mongo()
-    # optimize_tesseract()
-    # test_last()
-
-
+    # connect('myNewDatabase')
+    test_updated_algotihm()

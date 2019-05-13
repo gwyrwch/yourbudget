@@ -189,6 +189,32 @@ class ReceiptReader:
         return img
 
     @classmethod
+    def make_box(cls, matrix):
+        m = len(matrix[0])
+        n = len(matrix)
+
+        from math import inf
+        fx, sx = inf, -inf
+        fy, sy = inf, -inf
+
+        for i in range(n):
+            for j in range(m):
+                if matrix[i][j]:
+                    fx = min(fx, i)
+                    sx = max(sx, i)
+                    fy = min(fy, j)
+                    sy = max(sy, j)
+
+        if fx > sx or fy > sy:
+            return []
+
+        matrix = matrix[fx:sx + 1]
+        for i in range(len(matrix)):
+            matrix[i] = matrix[i][fy:sy+1]
+        return matrix
+
+
+    @classmethod
     def remove_border_noise(cls, img):
         """
         Removes noise from the border of the image. Works with shadows, smooth backgrounds
@@ -213,8 +239,7 @@ class ReceiptReader:
                 if used_in_bfs[i][j]:
                     matrix[i][j] = 0
 
-        # todo: bound full image into box
-
+        matrix = cls.make_box(matrix)
         return cls.get_image_from_matrix(matrix)
 
     @classmethod

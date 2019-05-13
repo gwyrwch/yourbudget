@@ -146,11 +146,9 @@ class RegistrationView(View):
 
     def post(self, request):
         result = request.POST
-        print(result)
         first_name = result.get('first-name')
         last_name = result.get('last-name')
         gender = result.get('gender')
-        print(gender)
         date_of_birth = result.get('date-of-birth')
         username = result.get('username')
         email = result.get('email')

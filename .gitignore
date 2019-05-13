@@ -3,4 +3,7 @@ venv/
 __pycache__/
 yourbudget/.DS_Store
 .DS_Store
+dump.rdb
+yourbudget/.DS_Store
+.DS_Store
 
