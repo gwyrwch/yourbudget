@@ -6,13 +6,21 @@ import time
 
 def only_digits(s):
     t = ''
+    no_dots = True
     for c in s:
-        if c.isdigit() or c == '.':
+        if c.isdigit():
             t += c
+        elif c == '.' and no_dots:
+            t += c
+            no_dots = False
     return float(t)
 
 
 class DefaultReceiptReader:
+    @classmethod
+    def convert_to_float(cls, raw_price):
+        return 0
+
     @classmethod
     def extract_info(cls, receipt, reader):
         """
@@ -31,6 +39,14 @@ class DefaultReceiptReader:
 class SosediReceiptReader:
     TOO_LARGE_LINE = 1.5
     CENTER_RATE_THRESHOLD = 0.4
+
+    @classmethod
+    def convert_to_float(cls, raw_price):
+        # template looks like: =0.59*1.000#0.59
+        if '#' not in raw_price:
+            return 0
+        l, r = raw_price.rsplit('#', 1)
+        return only_digits(r)
 
     @classmethod
     def extract_info(cls, receipt, reader):
@@ -87,14 +103,17 @@ class SosediReceiptReader:
                             list_of_purchases += [(raw_name, raw_price)]
                         last_purchase.clear()
                     what_we_need = (what_we_need + 1) % 2
-        extracted_data.list_of_purchases = TextReader.purchases_to_text(extracted_data.list_of_purchases, reader)
-
-        # this data is not saved
+        logging.info('Total num of puurchases is {}'.format(len(list_of_purchases)))
+        extracted_data.list_of_purchases = TextReader.purchases_to_text(list_of_purchases, reader, cls)
         return extracted_data
 
 
 # todo: rewrite completely
 class KoronaReceiptReader:
+    @classmethod
+    def convert_to_float(cls, raw_price):
+        return 0
+
     @classmethod
     def extract_info(cls, receipt, reader):
         extracted_data = ShoppingTrip()

@@ -78,6 +78,7 @@ class Telegram:
         photo_in_bytes = photo_in_bytes.read()
 
         telegram_username = request.POST['telegram_username']
+        save = request.POST.get('save')
 
         try:
             user = User.objects.get(telegram_username=telegram_username)
@@ -91,7 +92,7 @@ class Telegram:
         image.save(img_path)
 
         try:
-            save_trip.delay(user.username, img_path)
+            save_trip.delay(user.username, img_path, save)
         except:
             return HttpResponse(b'Service temporary unavaiable', status=500)
 
