@@ -276,3 +276,33 @@ class SettingsView(View):
             return HttpResponseRedirect('settings')
         else:
             return HttpResponseBadRequest()
+
+
+class ProfileView(View):
+    def get(self, request):
+        from mongoengine import connect
+        connect('myNewDatabase')
+
+        current_user = request.user
+        if not current_user.is_authenticated:
+            return HttpResponseRedirect(redirect_to='login')
+
+        history = UserData.get_history(current_user.username)
+
+        return render(request, 'profile.html', context={
+            'full_name': current_user.get_full_name(),
+            'full_address': current_user.country + ', ' + current_user.city,
+            'shopping_trips': len(history.all_trips),
+            'total_spent': sum(trip.receipt_amount for trip in history.all_trips),
+            'user_annotation': 'Hello! Want to know more about me? Haha, all I can say about myself is that my'
+                               'favourite product is {}. Now think how you can use it.'.format(current_user.fav_product)
+            # 'email': current_user.email,
+            # 'firstname': current_user.first_name,
+            # 'lastname': current_user.last_name,
+            # 'telegram_username': current_user.telegram_username,
+
+
+        })
+
+    def post(self, request):
+        pass

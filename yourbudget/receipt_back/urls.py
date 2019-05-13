@@ -14,5 +14,6 @@ urlpatterns = [
     path('save_receipt', api.Telegram.save_receipt, name='save_receipt'),
     path('save_trip_manual', api.Telegram.save_trip_manual, name='save_trip_manual'),
     path('all_trips_data', api.get_all_trips_data, name='all_trips_data'),
-    path('settings', views.SettingsView.as_view(), name='settings_view')
+    path('settings', views.SettingsView.as_view(), name='settings_view'),
+    path('profile', views.ProfileView.as_view(), name='user_view')
 ]

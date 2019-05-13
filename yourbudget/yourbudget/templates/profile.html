@@ -204,12 +204,11 @@
                     <i class="lni-chevron-right"></i>
                   </span>
                 </a>
-
                 <ul class="dropdown-menu sub-down">
-                  <li>
+                  <li class="active">
                     <a href="index">Dashboard</a>
                   </li>
-                  <li class="active">
+                  <li>
                     <a href="alltrips">All trips</a>
                   </li>
                 </ul>
@@ -223,17 +222,17 @@
         <!-- Page Container START -->
         <div class="page-container">
           <!-- Content Wrapper START -->
-          <div class="main-content">
+          div class="main-content">
             <div class="container-fluid">
               <!-- Breadcrumb Start -->
               <div class="breadcrumb-wrapper row">
                 <div class="col-12 col-lg-3 col-md-6">
-                      <h4 class="page-title">Shopping history info</h4>
+                  <h4 class="page-title">Profile</h4>
                 </div>
                 <div class="col-12 col-lg-9 col-md-6">
                   <ol class="breadcrumb float-right">
-                    <li><a href="index">Home</a></li>
-                    <li class="active">/ All trips</li>
+                    <li><a href="#">Pages</a></li>
+                    <li class="active"> / Profile</li>
                   </ol>
                 </div>
               </div>
@@ -241,48 +240,133 @@
             </div>
 
             <div class="container-fluid">
-              <!-- Title Count Start -->
-              <div class="card-group">
-
-              <!-- Title Count End -->
-                <div class="table-responsive">
-                    <table id="table1" class="display table table-striped table-bordered" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Name of shop</th>
-                                <th>Date</th>
-                                <th>Total amount</th>
-                                <th>Total discount</th>
-                                <th>Address</th>
-                                <th>Category</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
+              <div class="row">
+                <!-- User Summary -->
+                <div class="col-12 col-md-4">
+                  <div class="profile-bg">
+                    <div class="user-profile">
+                      <figure class="profile-wall-img">
+                        <img class="img-fluid" src="{% static "assets/img/walls.jpg" %}" alt="User Wall">
+                      </figure>
+                      <div class="profile-body">
+                        <figure class="profile-user-avatar">
+                          <img class="img-fluid img-thumbnail" src="{% static "assets/img/avatar/avatar.jpg" %}" alt="User Wall">
+{#                          <img src="{% static "assets/img/avatar/avatar.jpg" %}" alt="User Wall">#}
+                        </figure>
+                        <h3 class="profile-user-name">{{ full_name }}</h3>
+                        <small class="profile-user-address">{{ full_address }}</small>
+                        <div class="profile-user-description">
+                          <p>{{ user_annotation }}</p>
+                        </div>
+                        <div class="m-t-5">
+                          <a href="#" class="btn btn-common">Edit Profile</a>
+                        </div>
+                      </div>
+                      <div class="row border-top m-t-20">
+                        <div class="col-6 border-right d-flex flex-column justify-content-center align-items-center py-4">
+                          <h3>{{ shopping_trips }}</h3>
+                          <small>Shopping trips</small>
+                        </div>
+                        <div class="col-6 border-right d-flex flex-column justify-content-center align-items-center py-4">
+                          <h3>{{ total_spent }}</h3>
+                          <small>Total spent</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-
+                <!-- Profile holder -->
+                <div class="col-12 col-md-8">
+                  <div class="timeline-view bg-white p-20">
+                    <h4 class="box-title">User Timeline</h4>
+                    <div class="row">
+                      <div class="col-12">
+                        <form class="form">
+                          <div class="form-group floating-label">
+                            <textarea class="form-control form-control" row="7" placeholder="What's on your mind"></textarea>
+                          </div>
+                        </form>
+                        <div class="m-b-20">
+                          <div class="float-left">
+                            <a class="btn bg-transparent"><i class="lni-camera" aria-hidden="true"></i></a>
+                            <a class="btn bg-transparent"><i class="lni-map-marker" aria-hidden="true"></i></a>
+                            <a class="btn bg-transparent"><i class="lni-paperclip" aria-hidden="true"></i></a>
+                          </div>
+                          <a href="#" class="btn btn-common float-right">Post</a>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div id="activity" class="m-t-20">
+                          <ul class="timeline timeline-hairline">
+                            <li class="timeline-inverted">
+                              <div class="timeline-circle rounded-circle text-primary text-center"><i class="lni-envelope"></i></div>
+                              <div class="timeline-entry">
+                                <div class="card">
+                                  <div class="card-body timeline-entry-content">
+                                    <p class="mb-0">Received a <a class="text-primary" href="#">message</a> from <span class="text-primary">Samuel Nelson</span></p>
+                                    <p class="mb-0">
+                                      <span>
+                                        Sunday, March 25, 2018
+                                      </span>
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="timeline-circle rounded-circle text-warning text-center"><i class="lni-alarm-clock"></i></div>
+                              <div class="timeline-entry">
+                                <div class="card">
+                                  <div class="card-body timeline-entry-content">
+                                    <p class="mb-0">
+                                      User apply for refund at <span class="text-warning">9:15 pm</span>
+                                    </p>
+                                    <p class="mb-0">
+                                      <span>
+                                        Thursday, March 15, 2018
+                                      </span>
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="timeline-circle rounded-circle text-success text-center"><i class="lni-map-marker"></i></div>
+                              <div class="timeline-entry">
+                                <div class="card">
+                                  <div class="card-body timeline-entry-content">
+                                    <img class="rounded-circle float-left" src="{% static "assets/img/logo-text.png" %}" alt="Profile Image">
+                                    <div class="m-l-50">
+                                      <p class="mb-0">User receives order in the <span class="text-success">Office Place</span></p>
+                                      <p class="mb-0">
+                                        <span>
+                                          Monday, March 5, 2018
+                                        </span>
+                                      </p>
+                                    </div>
+                                    <div class="mt-2">
+                                      <p>Thank you for a good service.</p>
+                                      <div class="text-center">
+                                        <img class="img-fluid" src="{% static "assets/img/logo-text.png" %}" alt="Shopping Bag">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            </div>
-          <!-- Content Wrapper END -->
-
-          <!-- Footer START -->
-          <footer class="content-footer">
-            <div class="footer">
-              <div class="copyright">
-                <span>Copyright © 2019 <b class="text-dark">yourbudget inc</b>. All Right Reserved</span>
-                <span class="go-right">
-                  <a href="" class="text-gray">Term &amp; Conditions</a>
-                  <a href="" class="text-gray">Privacy &amp; Policy</a>
-                </span>
               </div>
             </div>
-          </footer>
-          <!-- Footer END -->
 
+          </div>
+          <!-- Content Wrapper END -->
         </div>
+
         <!-- Page Container END -->
       </div>
     </div>
@@ -301,21 +385,6 @@
     <script src="{% static "assets/js/jquery.app.js" %}"></script>
     <script src="{% static "assets/js/main.js" %}"></script>
 
-    <script src="{% static "assets/plugins/datatables/jquery.dataTables.min.js" %}"></script>
-    <script src="{% static "assets/plugins/datatables/dataTables.bootstrap4.min.js" %}"></script>
 
-    <script src="{% static "assets/plugins/datatables/dataTables.buttons.min.js" %}"></script>
-    <script src="{% static "assets/plugins/datatables/buttons.bootstrap4.min.js" %}"></script>
-    <script src="{% static "assets/plugins/datatables/jszip.min.js" %}"></script>
-    <script src="{% static "assets/plugins/datatables/pdfmake.min.js" %}"></script>
-    <script src="{% static "assets/plugins/datatables/vfs_fonts.js" %}"></script>
-    <script src="{% static "assets/plugins/datatables/buttons.html5.min.js" %}"></script>
-    <script src="{% static "assets/plugins/datatables/buttons.print.min.js" %}"></script>
-    <script src="{% static "assets/plugins/datatables/buttons.colVis.min.js" %}"></script>
-
-    <script src="{% static "assets/plugins/datatables/dataTables.responsive.min.js" %}"></script>
-    <script src="{% static "assets/plugins/datatables/responsive.bootstrap4.min.js" %}"></script>
-
-    <script src="{% static "assets/js/datatables.init.js" %}"></script>
   </body>
 </html>
