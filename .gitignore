@@ -1,3 +1,6 @@
 venv/
 .idea/
 __pycache__/
+yourbudget/.DS_Store
+.DS_Store
+

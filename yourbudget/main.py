@@ -166,7 +166,6 @@ def load_mongo():
     # sh.save()
 
 if __name__ == '__main__':
-    logging.basicConfig(filename="sample.log", level=logging.INFO)
     load_mongo()
     # optimize_tesseract()
     # test_last()
