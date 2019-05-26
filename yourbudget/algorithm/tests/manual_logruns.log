@@ -1,0 +1,27 @@
+sosedi_run:
+
+min = 1
+max = 30
+avg = 7.058955642897248
+med = 8
+
+min = 1
+max = 67
+avg = 13.813026389668725
+med = 15
+
+9 x 16
+
+sodesi_other_run:
+normal_range [11, 21]; [19;35]
+min = 1
+max = 254
+avg = 10.050139275766016
+med = 9
+
+min = 1
+max = 188
+avg = 24.481894150417826
+med = 22
+
+15 x 28

@@ -4,7 +4,12 @@ from datahandling.UserData import UserData
 import os
 import logging
 from mongoengine import *
-from datetime import datetime
+from algorithm.TextReader import TextReader
+from pytesseract import image_to_string as reader
+from algorithm.readers import SosediReceiptReader
+from PIL import Image
+
+from training import prepare_samples, process_samples, main_training, test_meteocr
 
 TESTS_PATH = 'yourbudget/algorithm/tests/'
 
@@ -44,12 +49,6 @@ def optimize_tesseract():
     exit(0)
     
 def test_updated_algotihm():
-    from algorithm.TextReader import TextReader
-    from pytesseract import image_to_string as reader
-    from algorithm.readers import SosediReceiptReader
-    from PIL import Image
-    from algorithm.ReceiptReader import ReceiptReader
-
     ReceiptReader.convert_to_receipt(TESTS_PATH + 'test_sosedi.JPG')
 
     # tt = TextReader.purchases_to_text([
@@ -61,4 +60,7 @@ def test_updated_algotihm():
 
 if __name__ == '__main__':
     # connect('myNewDatabase')
-    test_updated_algotihm()
+
+    # prepare_samples(TESTS_PATH)
+    # main_training()
+    test_meteocr(TESTS_PATH, verbose=False)
