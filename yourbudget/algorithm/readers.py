@@ -3,6 +3,7 @@ import logging
 from datahandling.ShoppingTrip import ShoppingTrip, Purchase
 from algorithm.TextReader import TextReader, ContourFinder
 import time
+import datetime
 
 
 def only_digits(s):
@@ -45,6 +46,9 @@ class SosediReceiptReader:
     def convert_to_float(cls, raw_price):
         # template looks like: =0.59*1.000#0.59
         if '$' not in raw_price:
+            pos_star = raw_price.find('*')
+            if pos_star != -1:
+                return only_digits(raw_price[0:pos_star])
             return 0
         l, r = raw_price.rsplit('$', 1)
         return only_digits(r)
@@ -57,6 +61,8 @@ class SosediReceiptReader:
 
         extracted_data.name_of_shop = 'Соседи'
         extracted_data.address = reader(receipt.img_lines[2], lang='rus')
+        # extracted_data.trip_date = datetime.datetime.now()
+
         list_of_purchases = []
 
         avg_height = receipt.average_height
@@ -105,6 +111,12 @@ class SosediReceiptReader:
                     what_we_need = (what_we_need + 1) % 2
         logging.info('Total num of puurchases is {}'.format(len(list_of_purchases)))
         extracted_data.list_of_purchases = TextReader.purchases_to_text(list_of_purchases, reader, cls)
+        extracted_data.receipt_amount = sum(
+            [
+                purchase.price
+                for purchase in extracted_data.list_of_purchases
+             ]
+        )
         return extracted_data
 
 

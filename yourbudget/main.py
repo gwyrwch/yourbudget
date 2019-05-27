@@ -61,7 +61,7 @@ def test_updated_algotihm():
 if __name__ == '__main__':
     # connect('myNewDatabase')
 
-    test_last()
+    # test_last()
     # prepare_samples(TESTS_PATH)
     # main_training()
-    # test_meteocr(TESTS_PATH, verbose=False)
+    test_meteocr(TESTS_PATH, verbose=False)

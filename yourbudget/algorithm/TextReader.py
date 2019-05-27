@@ -38,6 +38,7 @@ class TextReader:
 
     # major major Fixme: should be captured from the current size of image
     INTEPS = 4
+    PT_THRESHOLD = 93
 
     @classmethod
     def digit_read(cls, single_digit_png):
@@ -54,7 +55,7 @@ class TextReader:
 
         img_vector = sum(matrix, [1])
 
-        if n < cls.INTEPS or m < cls.INTEPS:
+        if sum(img_vector) >= cls.PT_THRESHOLD:
             return '.'
 
         context = list(map(str, range(10))) + ['*', '=', '$']

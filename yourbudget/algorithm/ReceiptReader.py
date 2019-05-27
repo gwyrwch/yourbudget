@@ -146,7 +146,7 @@ class ReceiptReader:
             draw = ImageDraw.Draw(img)
 
             print('Left point = ', left_point)
-            print('Right point = ', right_point)
+            print('Right point =  ', right_point)
 
             draw.rectangle(Region.make_box_around(left_point), fill="blue")
             draw.rectangle(Region.make_box_around(right_point), fill="blue")
@@ -154,7 +154,7 @@ class ReceiptReader:
             img.show()
 
         dx = -left_point[0] + right_point[0]
-        dy = abs(left_point[1] - right_point[1])
+        dy = -left_point[1] + right_point[1]
 
         angle = atan(dx / dy) / pi * 180
 
@@ -321,9 +321,15 @@ class ReceiptReader:
         cv2.imwrite(filename, gray)
 
         receipt_img = Image.open(filename)
+        logging.info('Image to gray')
+        receipt_img.show()
         receipt_img = cls.compress_image(receipt_img)
-        receipt_img = cls.cut_receipt_from_raw_image(receipt_img)
+        logging.info('Image compressed')
+        # receipt_img = cls.cut_receipt_from_raw_image(receipt_img)
+        # receipt_img.show()
+        logging.info('Image cut from image')
         receipt_img = cls.remove_border_noise(receipt_img)
+        logging.info('Noize removed')
 
         return receipt_img
 
@@ -340,10 +346,13 @@ class ReceiptReader:
 
         receipt_img = cls.preprocess_image(image_path)
 
+        receipt_img.show()
+
         image_lines = cls.find_unparsed_lines(receipt_img)
         logging.info('i found {} lines'.format(len(image_lines)))
         for i in range(len(image_lines)):
             image_lines[i].save('result_lines/line{}.png'.format(i))
+            image_lines[i].show()
 
         if USE_PYOCR:
             raise NotImplementedError('pyocr is not implemented')
