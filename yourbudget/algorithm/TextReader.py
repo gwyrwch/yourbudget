@@ -5,6 +5,7 @@ import logging
 from datahandling.ShoppingTrip import Purchase
 from .Meteocr import Meteocr
 
+
 class TextReader:
     COUNTOURS = False
 
@@ -22,6 +23,8 @@ class TextReader:
             price_splitted = cls.split_into_columns(price)
             price_splitted = reversed(price_splitted)
 
+            print(reader(price))
+
             price = ''.join(
                 cls.digit_read(single_digit_png)
                 for single_digit_png in price_splitted
@@ -33,7 +36,7 @@ class TextReader:
 
         return result
 
-    # Fixme: should be captured from the current size of image
+    # major major Fixme: should be captured from the current size of image
     INTEPS = 4
 
     @classmethod

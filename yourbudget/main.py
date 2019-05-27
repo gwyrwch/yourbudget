@@ -16,7 +16,7 @@ TESTS_PATH = 'yourbudget/algorithm/tests/'
 
 def test_last():
     tests = os.listdir(TESTS_PATH)
-    test_path = TESTS_PATH + tests[-1]
+    test_path = TESTS_PATH + 'test_sosedi.JPG'
 
     r = ReceiptReader.convert_to_receipt(test_path)
     exit(0)
@@ -61,6 +61,7 @@ def test_updated_algotihm():
 if __name__ == '__main__':
     # connect('myNewDatabase')
 
+    test_last()
     # prepare_samples(TESTS_PATH)
     # main_training()
-    test_meteocr(TESTS_PATH, verbose=False)
+    # test_meteocr(TESTS_PATH, verbose=False)

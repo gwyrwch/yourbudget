@@ -6,7 +6,7 @@ from algorithm.ShopDeducter import ShopDeducter
 from algorithm.RegionFinder import RegionFinder
 from algorithm.DistFunctionFabric import DistFunctionFabric
 from math import atan, pi
-
+import os
 import cv2
 import pyocr
 import pyocr.builders

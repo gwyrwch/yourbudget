@@ -128,5 +128,5 @@ def test_meteocr(TESTS_PATH, verbose=False):
 
     print('Total {}% ok'.format(ok / (ok + wa) * 100))
 
-# more data for 4 and #
-# 2, 6, 9 have tests with problems
+# more data!
+# add . to characters
