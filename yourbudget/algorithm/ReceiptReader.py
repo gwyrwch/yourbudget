@@ -6,7 +6,7 @@ from algorithm.ShopDeducter import ShopDeducter
 from algorithm.RegionFinder import RegionFinder
 from algorithm.DistFunctionFabric import DistFunctionFabric
 from math import atan, pi
-
+import os
 import cv2
 import pyocr
 import pyocr.builders
@@ -185,7 +185,7 @@ class ReceiptReader:
         height = DESIRED_HEIGHT
         width = int(1. * DESIRED_HEIGHT / n * m)
 
-        img = img.resize((width, height), Image.BOX)
+        img = img.resize((width, height), Image.BICUBIC)
         return img
 
     @classmethod
@@ -213,6 +213,19 @@ class ReceiptReader:
             matrix[i] = matrix[i][fy:sy+1]
         return matrix
 
+    @classmethod
+    def image_in_box(cls, img):
+        # fixme: slow code
+        matrix = cls.get_matrix_from_image(img)
+        matrix = cls.make_box(matrix)
+        return cls.get_image_from_matrix(matrix)
+
+    @classmethod
+    def resize_matrix(cls, matrix, sz):
+        # fixme: slow code
+        img = cls.get_image_from_matrix(matrix)
+        img = img.resize(sz, Image.HAMMING)
+        return cls.get_matrix_from_image(img)
 
     @classmethod
     def remove_border_noise(cls, img):
@@ -297,16 +310,9 @@ class ReceiptReader:
         return p / q
 
     @classmethod
-    def convert_to_receipt(cls, image_path):
-        """
-        Takes a raw image and processes the full algorithm of extracting receipt data from it.
-
-        :param image_path
-            path to the photo of receipt
-        :returns
-            ShoppingTrip extracted from image
-        """
+    def preprocess_image(cls, image_path):
         image = cv2.imread(image_path)
+
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         gray = cv2.medianBlur(gray, 3)
         ret, gray = cv2.threshold(gray, 127, 255, 0)
@@ -318,6 +324,21 @@ class ReceiptReader:
         receipt_img = cls.compress_image(receipt_img)
         receipt_img = cls.cut_receipt_from_raw_image(receipt_img)
         receipt_img = cls.remove_border_noise(receipt_img)
+
+        return receipt_img
+
+    @classmethod
+    def convert_to_receipt(cls, image_path):
+        """
+        Takes a raw image and processes the full algorithm of extracting receipt data from it.
+
+        :param image_path
+            path to the photo of receipt
+        :returns
+            ShoppingTrip extracted from image
+        """
+
+        receipt_img = cls.preprocess_image(image_path)
 
         image_lines = cls.find_unparsed_lines(receipt_img)
         logging.info('i found {} lines'.format(len(image_lines)))
