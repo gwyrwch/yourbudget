@@ -56,12 +56,22 @@ def test_updated_algotihm():
     # ], reader, SosediReceiptReader)
     # print(tt[0].name_of_product)
 
+def clean_mongo():
+    connect('myNewDatabase')
+    from datahandling.ShoppingHistory import ShoppingHistory
+    sh = ShoppingHistory.objects(username="alex").get()
+
+    pass
+
+
+
 
 
 if __name__ == '__main__':
-    # connect('myNewDatabase')
-
+    # clean_mongo()
     # test_last()
     # prepare_samples(TESTS_PATH)
     # main_training()
     test_meteocr(TESTS_PATH, verbose=False)
+
+

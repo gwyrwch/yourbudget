@@ -3,6 +3,7 @@ from algorithm.ReceiptReader import ReceiptReader
 from pytesseract import image_to_string as reader
 from PIL import Image
 from algorithm.Meteocr import MeteocrTrainer, Meteocr
+from collections import defaultdict
 
 def prepare_samples(tests_path):
     tests = os.listdir(tests_path + 'for_samples')
@@ -102,12 +103,20 @@ def process_samples(tests_path):
 
 def main_training():
     MeteocrTrainer.run_training(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '$', '*', '='])
+    # MeteocrTrainer.run_training(['а', 'б', 'в', 'д', 'е', 'и', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'у', '$', '='])
     Meteocr().save_theta()
 
 
 def test_meteocr(TESTS_PATH, verbose=False):
     tests_path = os.path.join(TESTS_PATH, 'tests_for_meteocr')
     ok, wa = 0, 0
+
+    context = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '$', '*', '=']
+    # context = ['а', 'б', 'в', 'д', 'е', 'и', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'у', '$', '=']
+
+    cnt_ok = defaultdict(int)
+    cnt_wa = defaultdict(int)
+
     for d in os.listdir(tests_path):
         if d == '.DS_Store':
             continue
@@ -115,18 +124,36 @@ def test_meteocr(TESTS_PATH, verbose=False):
         ans = d.split('_')[0]
 
         img_vector = Meteocr().vectorize(img)
-        res = Meteocr().calculate(img_vector, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '$', '*', '='], verbose)
+
+        if ans not in context:
+            continue
+
+        res = Meteocr().calculate(img_vector, context, verbose)
 
         if res == ans:
             ok += 1
             print('OK {}'.format(res))
+
+            cnt_ok[ans] += 1
         else:
             wa += 1
             print('WA {} expected {}'.format(res, ans))
+            cnt_wa[ans] += 1
             if verbose:
                 img.show()
 
     print('Total {}% ok'.format(ok / (ok + wa) * 100))
+    for c in context:
+        ok = cnt_ok[c]
+        total = cnt_ok[c] + cnt_wa[c]
+
+        if total == 0:
+            print('No samples for {}'.format(c))
+        else:
+            print('{} ok for {}'.format(ok / total * 100, c))
+
+
+
 
 # more data!
 # add . to characters
