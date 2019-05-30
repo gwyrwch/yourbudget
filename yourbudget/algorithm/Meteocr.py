@@ -24,18 +24,26 @@ class Meteocr:
 
     def __new__(cls):
         if not hasattr(cls, 'instance'):
+            if not os.path.exists(ValueFiles.theta_trained):
+                raise FileNotFoundError('No such files')
             cls.instance = super(Meteocr, cls).__new__(cls)
+
             with open(ValueFiles.theta_trained, 'r') as file:
                 reader = csv.reader(file)
                 for row in reader:
-                    assert len(row) == 146
-
                     character = row[0]
                     cls.THETA[character] = np.array(list(map(float, row[1:])))
 
         return cls.instance
 
     def calculate(self, x, context, verbose=False):
+        '''
+        :param x: array of features
+        :param context:
+        :param verbose:
+        :return:
+        '''
+
         best_probability = 0
         result = '-'
 
@@ -56,7 +64,7 @@ class Meteocr:
         return result
 
     def save_theta(self):
-        os.system('cp {} {}'.format(ValueFiles.theta_trained, ValueFiles.theta_trained_backup))
+        os.system('cp {} {}'.format(ValueFiles.theta_trained, ValueFiles.theta_trained_backup))  # todo: sorry guys unix only
         with open(ValueFiles.theta_trained, 'w') as file:
             for character, theta_vector in self.THETA.items():
                 file.write(','.join([character] + list(map(str, theta_vector.tolist()))))
@@ -76,19 +84,19 @@ class MeteocrTrainer:
         """
 
         :param character:
-        :param current_theta: np.array of 144 elements
-        :param sample: array of pairs: np.array of 144 elements and character
+        :param current_theta: np.array of 145 elements
+        :param sample: array of pairs: np.array of 145 elements and character
         :return:
         """
         for iters in range(5):
             alpha = 1
-            for iterations in range(60):
+            for iterations in range(40):
                 new_theta = current_theta.copy()
 
                 for x, c in sample:
-                    # print(current_theta.size, x.size)
                     y = 1 if c == character else 0
                     new_theta = new_theta + alpha * (y - f((current_theta * x).sum())) * x
+
                 alpha /= 2
                 current_theta = new_theta
         return current_theta
@@ -114,8 +122,12 @@ class MeteocrTrainer:
 
         for c in characters_to_train:
             current_theta = Meteocr().THETA.get(c, np.zeros(145))
+            old_theta = current_theta[0]
             result_theta = cls._train(
                 c, current_theta, sample
             )
-            print('Updating theta of {} to {}'.format(c, result_theta[0]))
+            if abs(old_theta - result_theta[0]) < 10**-4:
+                print('Theta of {} wasn"t updated much'.format(c))
+            else:
+                print('Updating theta of {} to {}'.format(c, result_theta[0]))
             Meteocr.THETA[c] = result_theta
