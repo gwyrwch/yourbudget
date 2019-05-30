@@ -30,7 +30,7 @@ def test_rotation():
 
 
 def test_biggz():
-    path = TESTS_PATH + 'test_biggz.JPG'
+    path = TESTS_PATH + 'temp.png'
     r = ReceiptReader.convert_to_receipt(path)
     exit(0)
 
@@ -62,9 +62,6 @@ def clean_mongo():
     sh = ShoppingHistory.objects(username="alex").get()
 
     pass
-
-
-
 
 
 if __name__ == '__main__':

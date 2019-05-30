@@ -102,8 +102,14 @@ def process_samples(tests_path):
 
 
 def main_training():
-    MeteocrTrainer.run_training(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '$', '*', '='])
-    # MeteocrTrainer.run_training(['а', 'б', 'в', 'д', 'е', 'и', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'у', '$', '='])
+    # MeteocrTrainer.run_training(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '$', '*', '='])
+    MeteocrTrainer.run_training(
+        [
+            'а', 'А', 'б', 'в', 'г', 'д', 'е', 'ж', 'и', 'нн',
+            'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц',
+            'ч', 'ш', 'ю', 'я', '$', '='
+         ]
+    )
     Meteocr().save_theta()
 
 
@@ -111,8 +117,11 @@ def test_meteocr(TESTS_PATH, verbose=False):
     tests_path = os.path.join(TESTS_PATH, 'tests_for_meteocr')
     ok, wa = 0, 0
 
-    context = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '$', '*', '=']
-    # context = ['а', 'б', 'в', 'д', 'е', 'и', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'у', '$', '=']
+    # context = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '$', '*', '=']
+    context = [
+        'а', 'А', 'б', 'в', 'г', 'д', 'е', 'ж', 'и', 'нн', 'к', 'л',
+        'м', 'н', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'ю', 'я', '$', '='
+    ]
 
     cnt_ok = defaultdict(int)
     cnt_wa = defaultdict(int)
