@@ -11,6 +11,17 @@ class ShopDeducter:
     ]
 
     @classmethod
+    def deduct_shop(cls, raw_shop_name):
+        best_result = 0.5
+        best_reader = DefaultReceiptReader
+        for name, reader in cls.available_readers:
+            distance = cls.string_distance(name, raw_shop_name)
+            if distance > best_result:
+                best_result = distance
+                best_reader = reader
+        return best_reader
+
+    @classmethod
     def string_distance(cls, s1, s2):
         if s1.count(s2):
             return 1.0
@@ -35,14 +46,3 @@ class ShopDeducter:
                     if s1[i] == s2[j]:
                         dp[i + 1][j + 1] = max(dp[i + 1][j + 1], dp[i][j] + 1)
         return res / len(s1)
-
-    @classmethod
-    def deduct_shop(cls, raw_shop_name):
-        best_result = 0.5
-        best_reader = DefaultReceiptReader
-        for name, reader in cls.available_readers:
-            distance = cls.string_distance(name, raw_shop_name)
-            if distance > best_result:
-                best_result = distance
-                best_reader = reader
-        return best_reader

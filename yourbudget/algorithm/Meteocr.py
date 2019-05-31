@@ -3,6 +3,7 @@ from math import exp
 import numpy as np
 import os
 from PIL import Image
+from random import randrange
 
 
 class ValueFiles:
@@ -19,8 +20,21 @@ def f(z):
     return 1 / (1 + exp(-z))
 
 
+EPS = 10 ** -10
+
+
 class Meteocr:
     THETA = {}
+
+    RUSSIAN_LETTERS = [
+        'а', 'А', 'б', 'Б', 'в', 'г', 'д', 'е', 'Е', 'ж', 'и', 'нн', 'к', 'л',
+        'м', 'н', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'ю', 'я'
+    ]
+    DIGITS = list(map(str, range(0, 10)))
+    SPEC_CHARACTERS = ['$', '*', '=', '@']
+
+    DIGIT_CONTEXT = DIGITS + SPEC_CHARACTERS
+    FULL_CONTEXT = DIGITS + RUSSIAN_LETTERS + SPEC_CHARACTERS
 
     def __new__(cls):
         if not hasattr(cls, 'instance'):
@@ -37,14 +51,14 @@ class Meteocr:
         return cls.instance
 
     def calculate(self, x, context, verbose=False):
-        '''
+        """
         :param x: array of features
         :param context:
         :param verbose:
         :return:
-        '''
+        """
 
-        best_probability = 0
+        best_probability = -np.inf
         result = '-'
 
         x = np.array(x)
@@ -52,11 +66,12 @@ class Meteocr:
         for c in context:
             if c not in self.THETA:
                 self.THETA[c] = np.zeros(145)
-            prob = f((self.THETA[c] * x).sum())
+
+            z = (self.THETA[c] * x).sum()
             if verbose:
-                print(c, ' ', round(prob, 3))
-            if prob > best_probability:
-                best_probability = prob
+                print(c, ' ', round(z, 3))
+            if z > best_probability:
+                best_probability = z
                 result = c
 
         if verbose:
@@ -82,7 +97,6 @@ class MeteocrTrainer:
     @classmethod
     def _train(cls, character, current_theta, sample):
         """
-
         :param character:
         :param current_theta: np.array of 145 elements
         :param sample: array of pairs: np.array of 145 elements and character
@@ -90,12 +104,15 @@ class MeteocrTrainer:
         """
         for iters in range(5):
             alpha = 1
-            for iterations in range(40):
+            _lambda = 1
+
+            for iterations in range(20):
                 new_theta = current_theta.copy()
 
                 for x, c in sample:
                     y = 1 if c == character else 0
-                    new_theta = new_theta + alpha * (y - f((current_theta * x).sum())) * x
+                    new_theta = new_theta - alpha * (-y + f((current_theta * x).sum())) * x
+                new_theta = new_theta - current_theta * alpha * _lambda
 
                 alpha /= 2
                 current_theta = new_theta

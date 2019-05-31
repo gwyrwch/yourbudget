@@ -38,7 +38,7 @@ class DefaultReceiptReader:
         return extracted_data
 
 
-class SosediReceiptReader:
+class SosediReceiptReader(DefaultReceiptReader):
     TOO_LARGE_LINE = 1.5
     CENTER_RATE_THRESHOLD = 0.4
 
@@ -54,13 +54,13 @@ class SosediReceiptReader:
         return only_digits(r)
 
     @classmethod
-    def extract_info(cls, receipt, reader):
+    def extract_info(cls, receipt, recognizer):
         from algorithm.ReceiptReader import ReceiptReader
 
         extracted_data = ShoppingTrip()
 
         extracted_data.name_of_shop = 'Соседи'
-        extracted_data.address = reader(receipt.img_lines[2], lang='rus')
+        extracted_data.address = recognizer.recognize(receipt.img_lines[2])
         extracted_data.trip_date = datetime.datetime.now()
 
         list_of_purchases = []
@@ -110,7 +110,7 @@ class SosediReceiptReader:
                         last_purchase.clear()
                     what_we_need = (what_we_need + 1) % 2
         logging.info('Total num of puurchases is {}'.format(len(list_of_purchases)))
-        extracted_data.list_of_purchases = TextReader.purchases_to_text(list_of_purchases, reader, cls)
+        extracted_data.list_of_purchases = TextReader.purchases_to_text(list_of_purchases, recognizer, cls)
         extracted_data.receipt_amount = sum(
             [
                 purchase.price
@@ -121,7 +121,7 @@ class SosediReceiptReader:
 
 
 # todo: rewrite completely
-class KoronaReceiptReader:
+class KoronaReceiptReader(DefaultReceiptReader):
     @classmethod
     def convert_to_float(cls, raw_price):
         return 0

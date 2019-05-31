@@ -72,5 +72,3 @@ if __name__ == '__main__':
     # prepare_samples(TESTS_PATH)
     # main_training()
     test_meteocr(TESTS_PATH, verbose=False)
-
-

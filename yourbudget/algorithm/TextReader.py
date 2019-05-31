@@ -2,6 +2,7 @@ import cv2, numpy
 from PIL import Image
 import logging
 
+from algorithm.character_recognition_adapters import MeteocrAdapter
 from datahandling.ShoppingTrip import Purchase
 from .Meteocr import Meteocr
 
@@ -10,7 +11,7 @@ class TextReader:
     COUNTOURS = False
 
     @classmethod
-    def purchases_to_text(cls, purchases, reader, shop_template_reader):
+    def purchases_to_text(cls, purchases, recognizer, shop_template_reader):
         logging.info('start reading text')
         result = []
         for (name, price) in purchases:
@@ -30,33 +31,13 @@ class TextReader:
 
             logging.info(price)
             price = shop_template_reader.convert_to_float(price)
-            result.append(Purchase(name_of_product=reader(name, lang='rus'), price=price))
+            result.append(Purchase(name_of_product=recognizer.recognize(name), price=price))
 
         return result
-
-    # major major Fixme: should be captured from the current size of image
-    INTEPS = 4
-    PT_THRESHOLD = 93
 
     @classmethod
     def digit_read(cls, single_digit_png):
-        from algorithm.ReceiptReader import ReceiptReader
-        matrix = ReceiptReader.get_matrix_from_image(single_digit_png)
-        matrix = ReceiptReader.make_box(matrix)
-
-        n = len(matrix)
-        m = len(matrix[0])
-
-        matrix = ReceiptReader.resize_matrix(matrix, (9, 16))
-
-        img_vector = sum(matrix, [1])
-
-        if sum(img_vector) >= cls.PT_THRESHOLD:
-            return '.'
-
-        context = list(map(str, range(10))) + ['*', '=', '$']
-        result = Meteocr().calculate(img_vector, context)
-        return result
+        return MeteocrAdapter().recognize(single_digit_png, Meteocr.DIGIT_CONTEXT)
 
     @classmethod
     def split_into_columns(cls, img):

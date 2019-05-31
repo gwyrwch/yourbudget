@@ -5,6 +5,7 @@ from PIL import Image
 from algorithm.Meteocr import MeteocrTrainer, Meteocr
 from collections import defaultdict
 
+
 def prepare_samples(tests_path):
     tests = os.listdir(tests_path + 'for_samples')
     from algorithm.TextReader import TextReader
@@ -33,6 +34,7 @@ def prepare_samples(tests_path):
                 s.save(tests_path + 'samples_unknown_char/{}_{}_?_{}.png'.format(m, n, cc))
                 cc += 1
     print('finished creating samples')
+
 
 class Statistics:
     def __init__(self, values=None):
@@ -70,7 +72,6 @@ class Statistics:
         )
 
 
-
 def process_samples(tests_path):
     samples_path = os.path.join(tests_path, 'samples_unknown_char')
 
@@ -88,7 +89,7 @@ def process_samples(tests_path):
     cnt = 0
 
     for sample in os.listdir(samples_path):
-        _m, _n, c, id = sample.split('_')
+        _m, _n, c, _id = sample.split('_')
 
         s = Image.open(os.path.join(samples_path, sample))
         m, n = s.size
@@ -102,13 +103,8 @@ def process_samples(tests_path):
 
 
 def main_training():
-    # MeteocrTrainer.run_training(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '$', '*', '='])
     MeteocrTrainer.run_training(
-        [
-            'а', 'А', 'б', 'Б', 'в', 'г', 'д', 'е', 'Е',     'ж', 'и', 'нн',
-            'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц',
-            'ч', 'ш', 'ю', 'я', '$', '='
-         ]
+        Meteocr.FULL_CONTEXT
     )
     Meteocr().save_theta()
 
@@ -117,12 +113,7 @@ def test_meteocr(TESTS_PATH, verbose=False):
     tests_path = os.path.join(TESTS_PATH, 'tests_for_meteocr')
     ok, wa = 0, 0
 
-    # context = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '$', '*', '=']
-    context = [
-        'а', 'А', 'б', 'Б', 'в', 'г', 'д', 'е', 'Е', 'ж', 'и', 'нн', 'к', 'л',
-        'м', 'н', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'ю', 'я', '$', '='
-    ]
-
+    context = Meteocr.FULL_CONTEXT
     cnt_ok = defaultdict(int)
     cnt_wa = defaultdict(int)
 
@@ -150,8 +141,8 @@ def test_meteocr(TESTS_PATH, verbose=False):
             cnt_wa[ans] += 1
             if verbose:
                 img.show()
+    result = ok / (ok + wa) * 100
 
-    print('Total {}% ok'.format(ok / (ok + wa) * 100))
     for c in context:
         ok = cnt_ok[c]
         total = cnt_ok[c] + cnt_wa[c]
@@ -161,6 +152,7 @@ def test_meteocr(TESTS_PATH, verbose=False):
         else:
             print('{} ok for {}'.format(ok / total * 100, c))
 
+    print('Total {}% ok'.format(result))
 
 
 

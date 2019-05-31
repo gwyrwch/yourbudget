@@ -14,6 +14,8 @@ from pytesseract import image_to_string as img_to_str
 import numpy
 import logging
 
+from algorithm.character_recognition_adapters import TesseractAdapter
+
 DEBUG = False
 
 USE_PYOCR = False
@@ -330,7 +332,7 @@ class ReceiptReader:
         return receipt_img
 
     @classmethod
-    def convert_to_receipt(cls, image_path):
+    def convert_to_receipt(cls, image_path, recognizer=TesseractAdapter()):
         """
         Takes a raw image and processes the full algorithm of extracting receipt data from it.
 
@@ -351,11 +353,11 @@ class ReceiptReader:
             raise NotImplementedError('pyocr is not implemented')
         else:
             raw_shop_name = ' '.join([
-                img_to_str(l, lang='rus')
+                recognizer.recognize(l)
                 for l in image_lines[0:3]
             ])
 
         reader = ShopDeducter.deduct_shop(raw_shop_name)
 
         logging.info('Shop deducter found ' + str(reader))
-        return reader.extract_info(Receipt(image_lines), img_to_str)
+        return reader.extract_info(Receipt(image_lines), recognizer)
