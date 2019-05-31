@@ -14,5 +14,7 @@ class TestMetetocr:
         if not os.path.exists(img_path):
             assert False
         img = Image.open(img_path)
-        vec = Meteocr.vectorize()
+        vec = Meteocr.vectorize(img)
+        assert vec.size == 145
+
 

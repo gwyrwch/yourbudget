@@ -11,7 +11,7 @@ import os
 
 
 @app.task
-def save_trip(username, img_path, save=True):
+def save_trip(username, img_path, save):
     logging.info('saving trip for {0} from {1}'.format(username, img_path))
 
     shopping_trip = ReceiptReader.convert_to_receipt(img_path)

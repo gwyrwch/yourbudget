@@ -44,7 +44,7 @@ class SosediReceiptReader:
 
     @classmethod
     def convert_to_float(cls, raw_price):
-        # template looks like: =0.59*1.000#0.59
+        # template looks like: =0.59*1.000$0.59
         if '$' not in raw_price:
             pos_star = raw_price.find('*')
             if pos_star != -1:
@@ -61,7 +61,7 @@ class SosediReceiptReader:
 
         extracted_data.name_of_shop = 'Соседи'
         extracted_data.address = reader(receipt.img_lines[2], lang='rus')
-        # extracted_data.trip_date = datetime.datetime.now()
+        extracted_data.trip_date = datetime.datetime.now()
 
         list_of_purchases = []
 

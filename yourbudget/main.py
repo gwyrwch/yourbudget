@@ -47,7 +47,8 @@ def optimize_tesseract():
     TextReader.split_into_columns(img)
 
     exit(0)
-    
+
+
 def test_updated_algotihm():
     ReceiptReader.convert_to_receipt(TESTS_PATH + 'test_sosedi.JPG')
 
@@ -55,6 +56,7 @@ def test_updated_algotihm():
     #     (Image.open('yourbudget/result_lines/purchase_47_name.png'), Image.open('yourbudget/result_lines/purchase_47_price.png'))
     # ], reader, SosediReceiptReader)
     # print(tt[0].name_of_product)
+
 
 def clean_mongo():
     connect('myNewDatabase')

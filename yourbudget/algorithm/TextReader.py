@@ -23,8 +23,6 @@ class TextReader:
             price_splitted = cls.split_into_columns(price)
             price_splitted = reversed(price_splitted)
 
-            print(reader(price))
-
             price = ''.join(
                 cls.digit_read(single_digit_png)
                 for single_digit_png in price_splitted
@@ -46,8 +44,6 @@ class TextReader:
         matrix = ReceiptReader.get_matrix_from_image(single_digit_png)
         matrix = ReceiptReader.make_box(matrix)
 
-        # ReceiptReader.get_image_from_matrix(matrix).show()
-
         n = len(matrix)
         m = len(matrix[0])
 
@@ -59,8 +55,7 @@ class TextReader:
             return '.'
 
         context = list(map(str, range(10))) + ['*', '=', '$']
-        meteocr = Meteocr()
-        result = meteocr.calculate(img_vector, context)
+        result = Meteocr().calculate(img_vector, context)
         return result
 
     @classmethod

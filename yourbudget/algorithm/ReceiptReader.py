@@ -305,8 +305,6 @@ class ReceiptReader:
                     if abs(i - center_x) < 2:
                         p += 1
                     q += 1
-        if p == 0:
-            img.show()
         return p / q
 
     @classmethod
@@ -322,11 +320,9 @@ class ReceiptReader:
 
         receipt_img = Image.open(filename)
         logging.info('Image to gray')
-        receipt_img.show()
         receipt_img = cls.compress_image(receipt_img)
         logging.info('Image compressed')
-        # receipt_img = cls.cut_receipt_from_raw_image(receipt_img)
-        # receipt_img.show()
+        # receipt_img = cls.cut_receipt_from_raw_image(receipt_img) # todo
         logging.info('Image cut from image')
         receipt_img = cls.remove_border_noise(receipt_img)
         logging.info('Noize removed')
@@ -346,13 +342,10 @@ class ReceiptReader:
 
         receipt_img = cls.preprocess_image(image_path)
 
-        receipt_img.show()
-
         image_lines = cls.find_unparsed_lines(receipt_img)
         logging.info('i found {} lines'.format(len(image_lines)))
         for i in range(len(image_lines)):
             image_lines[i].save('result_lines/line{}.png'.format(i))
-            image_lines[i].show()
 
         if USE_PYOCR:
             raise NotImplementedError('pyocr is not implemented')
