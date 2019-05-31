@@ -102,19 +102,19 @@ class MeteocrTrainer:
         :param sample: array of pairs: np.array of 145 elements and character
         :return:
         """
-        for iters in range(5):
-            alpha = 1
-            _lambda = 1
+        for iters in range(1):
+            alpha = 0.001
+            _lambda = 2
 
-            for iterations in range(20):
+            for iterations in range(40):
                 new_theta = current_theta.copy()
 
                 for x, c in sample:
                     y = 1 if c == character else 0
-                    new_theta = new_theta - alpha * (-y + f((current_theta * x).sum())) * x
+                    new_theta = new_theta - alpha * (f((current_theta * x).sum()) - y) * x
                 new_theta = new_theta - current_theta * alpha * _lambda
 
-                alpha /= 2
+                alpha *= 9 / 10
                 current_theta = new_theta
         return current_theta
 
